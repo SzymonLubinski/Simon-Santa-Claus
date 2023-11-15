@@ -1,0 +1,29 @@
+.resultContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 300px;
+  text-align: center;
+
+  &__welcome{
+    font-size: 2.5rem;
+  }
+
+  &__info{
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .resultContainer{
+    &__welcome{
+      width: 80vw;
+      position: absolute;
+      transform: translateY(-35vh);
+    }
+    &__info{
+      font-size: 5vw;
+    }
+  }
+}

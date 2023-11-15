@@ -1,0 +1,123 @@
+.card {
+  background: #00202f;
+  width: 250px;
+  margin: 20px 0;
+  padding: 10px;
+  color: #bf9000;
+}
+
+.imgContainer {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+.imgContainer__circle {
+  border-radius: 50%;
+  border: 4px solid #bf9000;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  background: #4c626d;
+}
+.imgContainer__circle svg {
+  border-radius: 50%;
+  height: 100%;
+}
+
+.inBorder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+}
+.inBorder__header {
+  width: 100%;
+  word-wrap: break-word;
+}
+.inBorder__notification {
+  margin: 10px 0;
+  width: 100%;
+}
+.inBorder__link {
+  background: #4c626d;
+  color: black;
+  width: 100%;
+}
+.inBorder__link button {
+  height: 60px;
+  width: 55px;
+}
+
+.memberSection {
+  background: #4c626d;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #bf9000;
+  border: 2px solid #bf9000;
+  padding: 5px;
+  font-size: 24px;
+}
+.memberSection__form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.memberSection__form_container {
+  height: 30px;
+  width: 100%;
+  display: flex;
+}
+.memberSection__form_container input {
+  height: 100%;
+  width: 80%;
+}
+.memberSection__form_container button {
+  height: 100%;
+  width: 20%;
+}
+.memberSection__pointer {
+  cursor: pointer;
+}
+.memberSection__displayNone {
+  display: none;
+}
+.memberSection__afterGlow {
+  font-size: 24px;
+}
+.memberSection__link {
+  display: none;
+  align-items: center;
+  max-width: 100%;
+  font-size: 1rem;
+}
+.memberSection__link_text {
+  width: 70%;
+  word-wrap: break-word;
+  margin-right: 3%;
+}
+.memberSection__link_btn {
+  background: #4c626d;
+  border: 1px solid #bf9000;
+  border-radius: 50%;
+  padding: 5px;
+}
+.memberSection__link_btn:hover {
+  background: #7f8f97;
+}
+.memberSection__link_btn img {
+  padding: 0;
+}
+.memberSection:hover .memberSection__link {
+  display: flex;
+}
+.memberSection:hover .memberSection__afterGlow {
+  display: none;
+}
+
+/*# sourceMappingURL=MemberCard.module.css.map */

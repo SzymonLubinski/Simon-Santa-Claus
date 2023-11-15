@@ -1,0 +1,48 @@
+.container {
+  background: lightblue;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 100%;
+}
+
+.form {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 80%;
+}
+.form__uploadedList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form__uploadedItem {
+  border: 1px solid black;
+  height: 40px;
+  width: 40px;
+  position: relative;
+  background: white;
+}
+.form__uploadedItem img {
+  height: 100%;
+}
+.form__uploadImage {
+  height: 100%;
+  margin-left: 10px;
+}
+.form__uploadImage svg {
+  height: 100%;
+}
+.form__uploadBtn {
+  margin-left: 10px;
+  height: 100%;
+}
+.form__uploadBtn svg {
+  height: 100%;
+}
+.form input {
+  display: none;
+}
+
+/*# sourceMappingURL=SendImageOrVideo.module.css.map */

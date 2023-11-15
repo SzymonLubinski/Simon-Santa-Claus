@@ -1,0 +1,38 @@
+.container {
+  border-top: 1px solid black;
+  margin-top: auto;
+  height: 20vh;
+  box-shadow: 0px -15px 75px -10px rgb(0, 32, 47);
+  z-index: 1;
+}
+
+.form {
+  display: flex;
+  width: 100%;
+  height: 70%;
+  overflow: hidden;
+}
+.form__textInput {
+  width: 90%;
+  resize: none;
+  font-size: 24px;
+  padding: 10px;
+}
+.form__post {
+  width: 10%;
+  height: 100%;
+  cursor: pointer;
+}
+.form__post:hover {
+  background: #7f8f97;
+}
+.form__post svg {
+  height: 100%;
+  width: 100%;
+}
+
+.upload {
+  height: 30%;
+}
+
+/*# sourceMappingURL=ChatInput.module.css.map */

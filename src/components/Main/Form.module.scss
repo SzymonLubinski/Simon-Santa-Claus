@@ -1,0 +1,44 @@
+.form{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__formLabel{
+    margin-top: 5px;
+  }
+  & input{
+    height: 30px;
+  }
+  &__title{
+    text-align: center;
+  }
+  &__error{
+    position: relative;
+
+    &__content{
+      width: 100%;
+      position: absolute;
+      color: red;
+      text-align: center;
+    }
+  }
+  &__submit{
+    margin: 50px auto 0 auto;
+    background: rgba(255,255,255, 0.2);
+    border-radius: 1.625rem;
+
+    & input{
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .form{
+
+    &__formLabel{
+      background: rgba(0,32,47,0.8);
+      font-size: 1.2rem;
+    }
+  }
+}

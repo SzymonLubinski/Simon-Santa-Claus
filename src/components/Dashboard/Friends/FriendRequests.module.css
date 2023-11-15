@@ -1,0 +1,36 @@
+.noRequests {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #bf9000;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.container {
+  width: 100%;
+  margin: 50px;
+  color: #bf9000;
+}
+.container__title {
+  margin: 50px;
+  font-size: 2rem;
+}
+
+.request {
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.request__btn {
+  margin-left: 20px;
+  width: 70px;
+  height: 50px;
+}
+.request__text {
+  font-size: 1.5rem;
+}
+
+/*# sourceMappingURL=FriendRequests.module.css.map */

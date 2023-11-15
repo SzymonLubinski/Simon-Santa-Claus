@@ -1,0 +1,37 @@
+.noRequests{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #bf9000;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.container{
+  width: 100%;
+  margin: 50px;
+  color: #bf9000;
+
+  &__title{
+    margin: 50px;
+    font-size: 2rem;
+  }
+}
+
+.request{
+  height: 50px;
+  display: flex;
+  align-items: center;
+
+  &__btn{
+    margin-left: 20px;
+    width: 70px;
+    height: 50px;
+  }
+
+  &__text{
+    font-size: 1.5rem;
+  }
+}

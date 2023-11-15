@@ -1,0 +1,34 @@
+.container{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: Garamond, serif;
+  color: #bf9000;
+  font-size: 2rem;
+
+  &__title{
+    text-align: center;
+  }
+  &__form{
+    margin: 100px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    & label{
+      margin-bottom: 10px;
+    }
+    & input{
+      height: 30px;
+      width: 100%;
+      margin: 10px 0;
+    }
+    & p{
+      font-size: 1.5rem;
+    }
+  }
+}

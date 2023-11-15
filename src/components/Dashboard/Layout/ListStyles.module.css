@@ -1,0 +1,34 @@
+.itemList {
+  overflow: auto;
+  height: 250px;
+  list-style: none;
+}
+.itemList__item {
+  height: 50px;
+}
+.itemList__link {
+  height: 100%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.itemList__link svg {
+  height: 80%;
+  margin-right: 10px;
+}
+.itemList__unseen {
+  margin-left: 10px;
+  border: 1px solid white;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+}
+
+@media screen and (max-width: 760px) {
+  .itemList {
+    flex: 1;
+  }
+}
+
+/*# sourceMappingURL=ListStyles.module.css.map */

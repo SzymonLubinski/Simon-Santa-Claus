@@ -1,0 +1,17 @@
+.container {
+  width: 100%;
+  border-bottom: 1px solid black;
+  height: 10vh;
+}
+
+.partnerInfo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.partnerInfo__img {
+  height: 50px;
+}
+
+/*# sourceMappingURL=Profile.module.css.map */

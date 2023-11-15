@@ -1,0 +1,25 @@
+.scrollContainer {
+  height: 100%;
+}
+
+.outerDivStyles {
+  position: relative;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.innerDivStyles {
+  position: relative;
+  transition: all;
+  animation-duration: 300ms;
+}
+
+.btn {
+  width: 100%;
+  position: absolute;
+  bottom: 0.25rem;
+  transition: all;
+  animation-duration: 300ms;
+}
+
+/*# sourceMappingURL=ScrollContainer.module.css.map */

@@ -1,0 +1,53 @@
+.container{
+  background: lightblue;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 100%;
+}
+
+.form{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 80%;
+
+  &__uploadedList{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__uploadedItem{
+    border: 1px solid black;
+    height: 40px;
+    width: 40px;
+    position: relative;
+    background: white;
+
+    & img{
+      height: 100%;
+    }
+  }
+
+  &__uploadImage{
+    height: 100%;
+    margin-left: 10px;
+
+    & svg{
+      height: 100%;
+    }
+  }
+
+  &__uploadBtn{
+    margin-left: 10px;
+    height: 100%;
+
+    & svg{
+      height: 100%;
+    }
+  }
+
+  & input{
+    display: none;
+  }
+}

@@ -1,0 +1,23 @@
+.requests {
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.requests svg {
+  height: 80%;
+  margin-right: 10px;
+}
+.requests__amount {
+  margin-left: 10px;
+  border: 2px solid #bf9000;
+  background: #c70000;
+  color: #bf9000;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*# sourceMappingURL=FriendsRequestsSidebarOptions.module.css.map */

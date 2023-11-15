@@ -1,0 +1,68 @@
+.container {
+  width: 100%;
+  position: relative;
+  height: 70vh;
+}
+.container__messages {
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.message {
+  width: 100%;
+  margin: 5px 0;
+}
+.message__user {
+  display: flex;
+  justify-content: left;
+  width: 100%;
+}
+.message__friend {
+  display: flex;
+  justify-content: right;
+  text-align: right;
+}
+.message__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+}
+.message__text {
+  border: 2px solid black;
+  padding: 5px;
+  font-size: 18px;
+  border-radius: 15%;
+}
+.message__file {
+  position: relative;
+}
+.message__file img {
+  position: static !important;
+  border-radius: 10%;
+  max-width: 500px;
+  max-height: 200px;
+}
+.message__file video {
+  border-radius: 10%;
+  max-width: 500px;
+  max-height: 400px;
+}
+.message__time {
+  font-size: 14px;
+}
+
+@media screen and (max-width: 760px) {
+  .container__messages {
+    padding: 0;
+  }
+  .message__container {
+    display: block;
+  }
+}
+
+/*# sourceMappingURL=Correspondence.module.css.map */

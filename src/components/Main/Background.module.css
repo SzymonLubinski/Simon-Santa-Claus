@@ -1,0 +1,45 @@
+.background {
+  height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
+  background: #00202f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: Garamond, serif;
+  color: #bf9000;
+}
+.background__header {
+  position: absolute;
+  top: 10px;
+  font-size: 2rem;
+}
+.background__imgContainer {
+  width: 800px;
+}
+.background__imgContainer img {
+  width: 100%;
+  height: auto;
+}
+.background__content {
+  position: absolute;
+}
+
+@media screen and (max-width: 760px) {
+  .background__header {
+    font-size: 1rem;
+  }
+  .background__imgContainer {
+    width: 100vw;
+    max-width: 800px;
+    min-width: 100px;
+    opacity: 0.3;
+  }
+  .background__imgContainer img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/*# sourceMappingURL=Background.module.css.map */

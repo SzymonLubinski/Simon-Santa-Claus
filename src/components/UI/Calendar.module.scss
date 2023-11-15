@@ -1,0 +1,79 @@
+.calendar{
+  width: 350px;
+  margin: 100px auto 0;
+  box-shadow: 1px 2px 3px 4px rgba(0, 0, 0, .1);
+  border-radius: 6px;
+}
+
+.header{
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-radius: 6px 6px 0 0;
+  background-color: #1abc9c;
+  color: #fff;
+}
+
+.nav{
+  width: 30px;
+  height: 30px;
+  border: 1px solid #fff;
+  border-radius: 99px;
+  outline: 0;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+.datetime {
+  margin: 0 auto;
+  font-size: 18px;
+  font-weight: bold;
+}
+.weekContainer,
+.dayContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.weekCell,
+.dayCell {
+  flex: 0 0 calc(100% / 7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+}
+.dayCellFaded {
+  opacity: .4;
+}
+
+.dayCellToday {
+  border-radius: 99px;
+  background-color: #1abc9c;
+  color: #fff;
+}
+.toDay{
+  flex: 0 0 calc(100% / 7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  background: #8cddcd;
+  border: 1px solid black;
+}
+.giftDay{
+  flex: 0 0 calc(100% / 7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  background: lightcoral;
+  border: 1px solid black;
+}
+@media screen and (max-width: 760px) {
+  .calendar{
+    width: 250px;
+    margin: 20px auto 50px;
+    box-shadow: 1px 2px 3px 4px rgba(0, 0, 0, .1);
+    border-radius: 6px;
+  }
+}
