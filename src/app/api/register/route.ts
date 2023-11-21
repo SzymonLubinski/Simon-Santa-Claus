@@ -8,7 +8,6 @@ export async function POST (req: Request) {
     try {
 
         const {data: data}: {data: RegisterFormTypes} = await req.json();
-        console.log('register', data)
 
         const existingUser = await fetchRedis(
             'get',

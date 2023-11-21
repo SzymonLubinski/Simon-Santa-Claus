@@ -5,7 +5,8 @@ import axios from "axios";
 import {RegisterFormTypes} from "@/types/other-types";
 import styles from './Form.module.scss';
 import SendBtn from "@/components/UI/SendBtn";
-import {FC} from "react";
+import {FC, useState} from "react";
+import LoadingBG from "@/components/Portal/LoadingBG";
 
 
 interface FormRegisterProps{

@@ -1,5 +1,4 @@
 import {Dayjs} from "dayjs";
-import axios from "axios";
 
 
 export function checkEveryoneHasEmail(list: externalFriend[]) {
@@ -15,8 +14,6 @@ export function checkEveryoneHasEmail(list: externalFriend[]) {
 export function checkEveryoneHasEndowed(list: DrawResult[]) {
     let has = true;
     list.forEach((friend) => {
-        console.log('friend:', friend)
-        console.log('typ:', typeof friend.endowed)
         if (typeof friend.endowed !== 'object') {
             has = false;
         }
@@ -42,10 +39,9 @@ function drawing(drawMembers: DrawMember[], currentMember: DrawMember) {
     const listWithoutCurrent = drawMembers.filter((member) => {
         return member != currentMember;
     })
-    const endowed = listWithoutCurrent[Math.floor(
+    return listWithoutCurrent[Math.floor(
         Math.random() * listWithoutCurrent.length
     )];
-    return endowed;
 
 }
 export async function getDrawResults (drawMembers: DrawMember[]) {

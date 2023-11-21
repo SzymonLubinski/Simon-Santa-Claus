@@ -4,8 +4,10 @@ import {useForm, SubmitHandler, useFieldArray} from "react-hook-form";
 import {FC, useEffect, useState} from "react";
 import axios from "axios";
 import Alert from "@/components/UI/Alert";
-import styles from './CreateGroupForm.module.scss';
 import {useRouter} from "next/navigation";
+import {useDispatch} from "react-redux";
+import {setOff} from "@/redux/portalSlice";
+import styles from './CreateGroupForm.module.scss';
 
 
 interface IFormInput {
@@ -23,6 +25,7 @@ interface CreateGroupFormProps {
 
 
 const CreateGroupForm: FC<CreateGroupFormProps> = ({friends}) => {
+    const dispatch = useDispatch();
     const router = useRouter();
     const [notEnoughMembers, setNotEnoughMembers] = useState<boolean>(false);
     const {register, reset, handleSubmit, formState, watch, control} = useForm<IFormInput>()
@@ -86,6 +89,7 @@ const CreateGroupForm: FC<CreateGroupFormProps> = ({friends}) => {
         }
     }, [formState, reset])
 
+    dispatch(setOff());
     return (
         <div className={styles.createGroupContainer}>
             <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>

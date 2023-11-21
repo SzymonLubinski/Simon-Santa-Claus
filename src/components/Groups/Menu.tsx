@@ -5,6 +5,9 @@ import {FC, useState} from "react";
 import Link from "next/link";
 import MemberList from "@/components/Groups/MemberList";
 import GroupInfo from "@/components/Groups/GroupInfo";
+import {useDispatch} from "react-redux";
+import {setOff} from "@/redux/portalSlice";
+
 
 interface MenuProps{
     group: GroupType;
@@ -15,7 +18,9 @@ interface MenuProps{
 
 const Menu: FC<MenuProps> = ({group, drawResults, areYouCreator}) => {
     const [showingSection, setShowingSection] = useState<string>('list');
+    const dispatch = useDispatch();
 
+    dispatch(setOff());
     return (
         <div className={styles.menu}>
             <h1>{group.name}</h1>

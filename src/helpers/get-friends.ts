@@ -6,17 +6,15 @@ export const getFriendsByUserId = async (userId: string) => {
         'smembers',
         `user:${userId}:friends`
     ) as string[];
-    const friends = await Promise.all(
-        friendIds.map( async (friendId) => {
+    return await Promise.all(
+        friendIds.map(async (friendId) => {
             const friend = await fetchRedis(
                 'get',
                 `user:${friendId}`
             ) as string;
-            const parsedFriend = JSON.parse(friend);
-            return parsedFriend;
+            return JSON.parse(friend);
         })
-    )
-    return friends;
+    );
 }
 
 export const getGroupsByUserId = async (userId: string) => {
@@ -24,15 +22,13 @@ export const getGroupsByUserId = async (userId: string) => {
         'smembers',
         `user:${userId}:groups`
     );
-    const groups = await Promise.all(
+    return await Promise.all(
         groupIds.map(async (groupId: string) => {
             const group = await fetchRedis(
                 'get',
                 `group:${groupId}`
             );
-            const parsedGroup = JSON.parse(group);
-            return parsedGroup;
+            return JSON.parse(group);
         })
-    )
-    return groups;
+    );
 }

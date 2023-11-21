@@ -7,6 +7,8 @@ import axios from "axios";
 import {useRouter} from "next/navigation";
 import {pusherClient} from "@/lib/pusher";
 import {toPusherKey} from "@/lib/utils";
+import {useDispatch} from "react-redux";
+import {setOff} from "@/redux/portalSlice";
 
 
 interface FriendRequestProps {
@@ -17,6 +19,7 @@ interface FriendRequestProps {
 const FriendRequests: FC<FriendRequestProps> = (
     {IncomingFriendRequests, sessionId}
 ) => {
+    const dispatch = useDispatch();
     const [friendRequests, setFriendRequests] = useState<IncomingFriendRequest[]>(
         IncomingFriendRequests
     );
@@ -53,6 +56,7 @@ const FriendRequests: FC<FriendRequestProps> = (
         router.refresh();
     }
 
+    dispatch(setOff());
     return (
         <>
             {friendRequests.length === 0 ? (

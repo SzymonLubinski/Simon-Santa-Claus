@@ -30,6 +30,7 @@ $s3: "";
   border-radius: 50%;
   opacity: 0.8;
   position: absolute;
+  z-index: auto;
   top: -100vh;
   animation-name: fall;
   animation-timing-function: linear;
@@ -80,7 +81,7 @@ $s3: "";
 
 .content {
   position: absolute;
-  z-index: 2;
+  z-index: 1;
   width: 100vw;
   display: flex;
   justify-content: center;

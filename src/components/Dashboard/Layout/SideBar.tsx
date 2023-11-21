@@ -7,6 +7,10 @@ import FriendsRequestsSidebarOptions from "@/components/Dashboard/Friends/Friend
 import SideBarChatList from "@/components/Dashboard/Layout/SideBarChatList";
 import SideBarGroupList from "@/components/Dashboard/Layout/SideBarGroupList";
 import styles from './SideBar.module.scss';
+import LoadingBG from "@/components/Portal/LoadingBG";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "@/redux/store";
+import {setOn} from "@/redux/portalSlice";
 
 
 interface SidebarOptions {
@@ -21,12 +25,19 @@ interface SidebarOptions {
 const SideBar: FC<SidebarOptions> = (
     {friends, userId, userName, groups, unseenRequestCount}
 ) => {
+    const portalActive = useSelector((state: RootState) => state.portal.active);
+    const dispatch = useDispatch();
     const [width, setWidth] = useState(0)
     const [showLayout, setShowLayout] = useState<boolean>(true);
     const [showToggle, setShowToggle] = useState<boolean>(width < 760);
     const layoutHandler = () => {
         setShowLayout(!showLayout);
     }
+    const redirectHandler = () => {
+        dispatch(setOn())
+        setShowLayout(false);
+    }
+
 
     useEffect(() => {
         function handleResize() {
@@ -56,12 +67,13 @@ const SideBar: FC<SidebarOptions> = (
 
     return (
         <div className={showLayout ? styles.container : `${styles.container} ${styles.hideToLeft}`}>
+            {portalActive && <LoadingBG/>}
             <div className={styles.container__logo}>
                 <SelectImg selectedImg={'santa'} height={100}/>
             </div>
             <ul className={styles.list}>
                 <li className={styles.list__requests}>
-                    <Link href={'/dashboard/add'} onClick={() => setShowLayout(false)}>
+                    <Link href={'/dashboard/add'} onClick={() => redirectHandler()}>
                         <div className={styles.list__add}>
                             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
                                 <path
@@ -84,7 +96,7 @@ const SideBar: FC<SidebarOptions> = (
                     />
                 </li>
                 <li className={styles.list__groups}>
-                    <Link href={'/dashboard/create-group'} onClick={() => setShowLayout(false)}>
+                    <Link href={'/dashboard/create-group'} onClick={() => redirectHandler()}>
                         <div className={styles.list__add}>
                             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
                                 <path

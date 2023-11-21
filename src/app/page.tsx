@@ -12,7 +12,7 @@ const Page: FC = async () => {
 
     return (
         <main className={styles.main}>
-            <Lay session={session}/>
+            <Lay userName={session?.user.name}/>
             <Home/>
         </main>
     )

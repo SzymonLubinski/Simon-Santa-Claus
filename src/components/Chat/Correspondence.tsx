@@ -7,7 +7,8 @@ import {pusherClient} from "@/lib/pusher";
 import {toPusherKey} from "@/lib/utils";
 import ScrollContainer from "@/components/Chat/ScrollContainer";
 import styles from './Correspondence.module.scss';
-
+import {useDispatch} from "react-redux";
+import {setOff} from "@/redux/portalSlice";
 
 interface CorrespondenceProps {
     initialMessages: Message[];
@@ -16,6 +17,8 @@ interface CorrespondenceProps {
 }
 
 const Correspondence: FC<CorrespondenceProps> = ({initialMessages, sessionId, chatId}) => {
+    const dispatch = useDispatch();
+
     const [messages, setMessages] = useState<Message[]>(initialMessages)
     useEffect(() => {
         pusherClient.subscribe(toPusherKey(`chat:${chatId}`));
@@ -29,6 +32,7 @@ const Correspondence: FC<CorrespondenceProps> = ({initialMessages, sessionId, ch
         }
     }, [chatId]);
 
+    dispatch(setOff());
     return (
         <div className={styles.container}>
             <ScrollContainer>

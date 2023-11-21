@@ -33,7 +33,7 @@ const Home = () => {
                 </div>
                 <div className={styles.content__section}>
                     <div className={styles.content__welcome}>
-                        <h1>Simon Santa Claus to strona dla was!</h1>
+                        <h1>Simon Santa Claus to strona dla Was!</h1>
                         {/*jakaś strzałeczka w dół przesuwająca zawartość*/}
                     </div>
                 </div>

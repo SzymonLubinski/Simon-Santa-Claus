@@ -7,6 +7,8 @@ import axios, {AxiosError} from "axios";
 import {z} from 'zod';
 import {addFriendValidator} from "@/lib/validation/add-friend";
 import styles from './AddFriendButton.module.scss';
+import {useDispatch} from "react-redux";
+import {setOff} from "@/redux/portalSlice";
 
 
 interface AddFriendButtonProps {
@@ -16,6 +18,7 @@ type FormData = z.infer<typeof addFriendValidator>
 
 
 const AddFriendButton: FC<AddFriendButtonProps> = ({}) => {
+    const dispatch = useDispatch();
     const [showSuccessState, setShowSuccessState] = useState<boolean>(false);
     const {register, reset, handleSubmit, formState, setError} = useForm<FormData>({
         resolver: zodResolver(addFriendValidator)
@@ -45,6 +48,7 @@ const AddFriendButton: FC<AddFriendButtonProps> = ({}) => {
         await addFriend(data.email);
     }
 
+    dispatch(setOff());
     return (
         <div className={styles.container}>
             <div className={styles.container__title}>
