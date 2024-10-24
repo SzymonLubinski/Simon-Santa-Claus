@@ -37,7 +37,8 @@ export async function POST(req: Request) {
         return new Response('Ok')
 
     } catch (error) {
-        return new Response('AUTHORIZATION: some error', {status: 400})
+        console.log('AUTHORIZATION error: ', error)
+        return new Response(`AUTHORIZATION: some error`, {status: 400})
     } finally {
 
     }
