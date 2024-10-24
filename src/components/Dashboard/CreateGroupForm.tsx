@@ -1,7 +1,7 @@
 'use client'
 
 import {useForm, SubmitHandler, useFieldArray} from "react-hook-form";
-import {FC, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 import Alert from "@/components/UI/Alert";
 import {useRouter} from "next/navigation";
@@ -24,7 +24,7 @@ interface CreateGroupFormProps {
 }
 
 
-const CreateGroupForm: FC<CreateGroupFormProps> = ({friends}) => {
+const CreateGroupForm = ({friends}: CreateGroupFormProps) => {
     const dispatch = useDispatch();
     const router = useRouter();
     const [notEnoughMembers, setNotEnoughMembers] = useState<boolean>(false);
@@ -123,6 +123,7 @@ const CreateGroupForm: FC<CreateGroupFormProps> = ({friends}) => {
                                    required: true,
                                    min: 1,
                                    max: 1000000,
+                                   valueAsNumber: true,
                                })}
                         />
                         <div className={styles.inputContainer__error}>
@@ -136,11 +137,13 @@ const CreateGroupForm: FC<CreateGroupFormProps> = ({friends}) => {
                             Maksymalny budżet
                         </label>
                         <input className={styles.inputContainer__input}
+                               type={"number"}
                             // aria-invalid={formState.errors.maxBudget ? 'true' : 'false'}
                                {...register('maxBudget', {
                                    required: true,
                                    min: 1,
                                    max: 1000000,
+                                   valueAsNumber: true,
                                })}
                         />
                         <div className={styles.inputContainer__error}>

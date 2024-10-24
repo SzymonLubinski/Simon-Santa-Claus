@@ -14,12 +14,14 @@ interface CorrespondenceProps {
     initialMessages: Message[];
     sessionId: string;
     chatId: string;
+    chatType: 'pair' | 'group';
+    groupPartner?: GroupType;
 }
 
 const Correspondence: FC<CorrespondenceProps> = ({initialMessages, sessionId, chatId}) => {
     const dispatch = useDispatch();
 
-    const [messages, setMessages] = useState<Message[]>(initialMessages)
+    const [messages, setMessages] = useState<Message[]>(initialMessages);
     useEffect(() => {
         pusherClient.subscribe(toPusherKey(`chat:${chatId}`));
         const messageHandler = (message: Message) => {

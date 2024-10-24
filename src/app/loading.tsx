@@ -1,12 +1,8 @@
 
-import { FC } from 'react';
 import Skeleton from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css'
 
-
-interface loadingProps{}
-
-const loading: FC<loadingProps> = ({}) => {
+const loading = () => {
     return (
         <div style={{
             display: "flex",

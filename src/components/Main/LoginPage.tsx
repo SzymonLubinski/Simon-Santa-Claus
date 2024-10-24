@@ -1,28 +1,26 @@
 'use client'
 
-import {FC, useState} from "react";
+import {useState} from "react";
 import {signIn} from "next-auth/react";
 import SelectImg from "@/components/UI/SelectImg";
 import FormRegister from "@/components/Main/FormRegister";
 import FormLogin from "@/components/Main/FormLogin";
 import styles from './LoginPage.module.scss';
 import {useDispatch} from "react-redux";
-import {setOff} from "@/redux/portalSlice";
+import {setOff, setOn} from "@/redux/portalSlice";
+import NotifyList from "@/components/Notify/NotifyList";
 
 
-const LoginPage: FC = () => {
+const LoginPage = () => {
     const dispatch = useDispatch();
-    const [loading, setLoading] = useState<boolean>(false);
     const [formType, setFormType] = useState('login');
 
     async function loginWithGoogle() {
-        setLoading(true);
+        dispatch(setOn());
         try {
             await signIn('google');
         } catch (err) {
             console.log('something wrong')
-        } finally {
-            setLoading(false);
         }
     }
 
@@ -55,12 +53,10 @@ const LoginPage: FC = () => {
                 <p className={styles.google__or}>Lub</p>
                 <button className={styles.google__btn} onClick={loginWithGoogle}>
                     <SelectImg selectedImg={'gmail'} height={18}/>
-                    {loading ?
-                        <p>ładowanie</p> :
-                        <p>Zaloguj się przez Google</p>
-                    }
+                    <p>Zaloguj się przez Google</p>
                 </button>
             </div>
+            <NotifyList position={'top-left'}/>
         </div>
     )
 }

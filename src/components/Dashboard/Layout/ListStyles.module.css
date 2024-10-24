@@ -1,10 +1,9 @@
 .itemList {
   overflow: auto;
-  height: 250px;
   list-style: none;
 }
-.itemList__item {
-  height: 50px;
+.itemList li {
+  margin: 5px 0;
 }
 .itemList__link {
   height: 100%;
@@ -13,7 +12,7 @@
   align-items: center;
 }
 .itemList__link svg {
-  height: 80%;
+  height: 40px;
   margin-right: 10px;
 }
 .itemList__unseen {

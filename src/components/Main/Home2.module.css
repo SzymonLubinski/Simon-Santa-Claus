@@ -1,0 +1,82 @@
+.welcome {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #bf9000;
+  font-family: Garamond, serif;
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+.welcome h1 {
+  text-align: center;
+}
+.welcome__1 {
+  display: flex;
+  align-items: center;
+}
+.welcome__2 {
+  font-weight: bold;
+}
+.welcome__3 {
+  max-width: 30vw;
+}
+.welcome__3 img {
+  width: 100%;
+  height: auto;
+}
+
+.chain {
+  position: relative;
+}
+.chain img {
+  height: 200px;
+  width: 100%;
+  transform: translateY(-50%);
+  object-fit: cover;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  margin-top: 100px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  background: #245c75;
+}
+.footer__imageContainer {
+  position: absolute;
+  transform: translateY(-70px);
+}
+.footer__imageContainer img {
+  width: 300px;
+  height: auto;
+}
+.footer__content {
+  position: absolute;
+  margin-top: 300px;
+  display: flex;
+}
+.footer__link {
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 800px) {
+  .welcome__2 {
+    text-align: center;
+  }
+  .welcome__3 {
+    max-width: 60vw;
+  }
+  .chain img {
+    height: 100px;
+  }
+}
+
+/*# sourceMappingURL=Home2.module.css.map */

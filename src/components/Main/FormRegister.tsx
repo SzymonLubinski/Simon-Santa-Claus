@@ -5,15 +5,16 @@ import axios from "axios";
 import {RegisterFormTypes} from "@/types/other-types";
 import styles from './Form.module.scss';
 import SendBtn from "@/components/UI/SendBtn";
-import {FC, useState} from "react";
-import LoadingBG from "@/components/Portal/LoadingBG";
+import {useDispatch} from "react-redux";
+import {handleAddNotify} from "@/helpers/notifications";
 
 
 interface FormRegisterProps{
     toLogin: () => void;
 }
 
-const FormRegister:FC<FormRegisterProps> = ({toLogin}) => {
+const FormRegister = ({toLogin}: FormRegisterProps) => {
+    const dispatch = useDispatch();
     const {register, reset, handleSubmit, formState, watch, control} = useForm<RegisterFormTypes>();
     const onSubmit: SubmitHandler<RegisterFormTypes> = async (data) => {
         try {
@@ -21,6 +22,10 @@ const FormRegister:FC<FormRegisterProps> = ({toLogin}) => {
                 data: data
             });
             toLogin();
+            handleAddNotify({
+                message: 'pomyślna rejestracja!',
+                type: "success",
+            }, dispatch);
         } catch (err){
             console.log('err: ', err.response.data)
         }

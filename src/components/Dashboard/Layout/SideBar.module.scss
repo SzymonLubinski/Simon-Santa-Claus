@@ -2,27 +2,44 @@
   background: #00202f;
   width: 20%;
   min-width: 300px;
-  max-height: 100vh;
-  min-height: 100vh;
+  height: 100vh;
   color: white;
   font-family: Garamond, serif;
 
+  & svg{
+    height: 40px;
+    width: auto;
+    margin-right: 10px;
+  }
+
   &__logo {
-    height: 10vh;
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 20vh;
+
+    & a{
+      position: relative;
+      height: 80%;
+
+      & img{
+        height: 100%;
+        width: auto;
+        padding: 0;
+      }
+    }
   }
 }
 
 .list {
-  height: 90vh;
+  height: 80vh;
   margin: 0;
   padding: 0;
   list-style-type: none;
   display: flex;
   flex-direction: column;
 
-  &__requests, &__friends, &__groups {
+  &__requests, &__friends, &__groups, &__sessionInfo {
     border-top: 1px solid #bf9000;
     padding: 10px;
   }
@@ -30,40 +47,21 @@
   &__sessionInfo {
     margin-top: auto;
     height: 10vh;
-    width: 100%;
-    border-top: 1px solid #bf9000;
   }
 
   &__add {
-    height: 50px;
     display: flex;
     justify-content: left;
     align-items: center;
-
-    & svg{
-      height: 80%;
-      margin-right: 10px;
-    }
   }
 }
 
 .sessionInfo {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 100%;
   width: 100%;
-
-  &__img {
-    width: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    & svg{
-      width: 80%;
-      height: auto;
-    }
-  }
 
   &__info {
     width: 60%;
@@ -74,24 +72,35 @@
 .toggle{
   position: absolute;
   height: 100%;
-  left: 85vw;
+  width: 10vw;
+  left: 90vw;
   display: none;
+  background: none;
+  transition: background-color 0.5s;
+
+  & svg{
+    width: 100%;
+    margin-right: 5px;
+  }
 
   &__background{
-    background: coral;
-    opacity: 0.5;
-  }
-  & svg{
-    width: 40px;
-    height: 50px;
+    background: rgba(159,186,223,0.7);
+    transition: background-color 0.5s;
   }
 }
 
-.hideToLeft{
-  animation: hideLayout 300ms normal forwards ease-in-out;
-}
+@media screen and (max-width: 660px) {
 
-@media screen and (max-width: 760px) {
+  .hideToLeft{
+    transform: translateX(-90vw);
+    transition: transform 0.5s ease-in;
+  }
+
+  .showToRight{
+    transform: translateX(0);
+    transition: transform 0.5s ease-in;
+  }
+
   .toggle{
     display: flex;
   }
@@ -101,7 +110,7 @@
     max-height: none;
     position: absolute;
     z-index: 2;
-    width: 85%;
+    width: 90vw;
     background: #00202f;
     display: flex;
     flex-direction: column;
@@ -115,38 +124,18 @@
   .list {
     list-style: none;
     width: 90%;
-    height: auto;
-    margin-top: 50px;
 
     &__add {
       display: flex;
       align-items: center;
     }
     &__friends, &__groups {
-      padding-top: 10px;
       display: flex;
       flex-flow: column;
-      min-height: 100px;
-      max-height: 300px;
     }
   }
-
-  .sessionInfo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 0;
-  }
 }
 
-@keyframes hideLayout {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-85vw);
-  }
-}
 
 
 

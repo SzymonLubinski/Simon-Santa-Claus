@@ -1,19 +1,18 @@
 
-import {FC} from 'react';
-import styles from './page.module.css'
 import Lay from "@/components/Header/Lay";
-import Home from "@/components/Main/Home";
 import {getServerSession} from "next-auth";
 import {authOptions} from "@/lib/auth";
+import styles from './page.module.css'
+import Home2 from "@/components/Main/Home2";
 
 
-const Page: FC = async () => {
+const Page = async () => {
     const session = await getServerSession(authOptions);
 
     return (
         <main className={styles.main}>
             <Lay userName={session?.user.name}/>
-            <Home/>
+            <Home2/>
         </main>
     )
 }

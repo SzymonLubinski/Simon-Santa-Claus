@@ -1,6 +1,5 @@
 
 
-import { FC } from 'react';
 import {getServerSession} from "next-auth";
 import {authOptions} from "@/lib/auth";
 import {notFound} from "next/navigation";
@@ -14,7 +13,7 @@ interface PageProps {
     }
 }
 
-const Page: FC<PageProps> = async ({params}) => {
+const Page = async ({params}: PageProps) => {
     const {groupId} = params;
     const session = await getServerSession(authOptions);
     if (!session) notFound();
@@ -30,12 +29,14 @@ const Page: FC<PageProps> = async ({params}) => {
         `group:${groupId}:draw-result`
     );
     const parsedDrawResults = JSON.parse(drawResults) as DrawResult[];
-    const areYouCreator = session.user.id === group.creatorId;
 
     return (
-        <div>
-            <Menu group={group} drawResults={parsedDrawResults} areYouCreator={areYouCreator}/>
-        </div>
+        <>
+            <Menu group={group}
+                  drawResults={parsedDrawResults}
+                  userId={session.user.id}
+            />
+        </>
     )
 }
 

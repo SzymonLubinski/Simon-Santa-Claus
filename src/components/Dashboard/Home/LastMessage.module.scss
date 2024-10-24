@@ -1,0 +1,44 @@
+.chat {
+  border: 1px solid black;
+  display: flex;
+  margin-top: 10px;
+
+  & section {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  & svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  &__text {
+    display: flex;
+    align-items: center;
+
+    & h3 {
+      margin-right: 5px;
+    }
+
+    & p {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      width: 300px;
+      height: 1.2em;
+      white-space: nowrap;
+    }
+
+    & span {
+      font-size: 0.7em;
+    }
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .chat {
+    padding: 0;
+  }
+}

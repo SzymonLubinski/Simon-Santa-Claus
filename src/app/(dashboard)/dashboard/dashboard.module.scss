@@ -1,69 +1,45 @@
-.layoutContainer{
+//LAYOUT
+.layoutContainer {
   width: 100%;
   display: flex;
 
-  &__aside{
+  &__aside {
     width: 100%;
   }
 }
 
-.pageContainer{
+//PAGE
+.pageContainer {
   width: 100%;
   min-height: 100vh;
 }
 
 .welcome{
-  min-height: 100vh;
-  width: 100%;
+  text-align: center;
+  padding: 50px 0;
+  font-family: Garamond, serif;
+  color: #bf9000;
+  font-size: 2em;
+}
+
+.activeMessages{
+  padding: 10px;
+}
+
+.chatList {
+  box-sizing: border-box;
+  list-style: none;
+  min-width: 400px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  color: #bf9000;
-
-  &__container{
-    margin: 0 50px;
-    text-align: center;
-  }
-
-  &__title{
-    font-size: 2rem;
-  }
-}
-
-.chatList{
-  box-sizing: border-box;
-    list-style: none;
-    min-width: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    margin:0 10px;
-}
-.chat{
-    border: 1px solid black;
-    padding: 5px 30px;
-    margin-top: 5px;
-
-    &__horizontal{
-        display: flex;
-
-        & p{
-            margin-left: 5px;
-        }
-    }
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 0 10px;
 }
 
 @media screen and (max-width: 760px) {
-  .welcome {
-    height: auto;
-    min-height: 100vh;
-  }
-  .chatList{
+  .chatList {
     min-width: 0;
     margin-top: 50px;
-  }
-  .chat {
-    padding: 0;
   }
 }

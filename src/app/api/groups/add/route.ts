@@ -14,6 +14,8 @@ export async function POST (req: Request) {
         if (!session) {
             return new Response('Unauthorized', {status: 401});
         }
+
+        // GET LOGGED FRIENDS
         const {data: data}:{data: RawGroupType} = await req.json();
         const convertedLoggedFriends = await Promise.all(
             [session.user.id, ...data.loggedFriends].map(async (friendId) => {
@@ -24,6 +26,8 @@ export async function POST (req: Request) {
                 return JSON.parse(rawFriend);
             })
         ) as User[];
+
+        // CONVERT EXTERNAL FRIENDS TO DATABASE RECORD
         const convertedExternalFriends = data.externalFriends.map((friendName) => {
             return {
                 name: friendName,
@@ -31,6 +35,8 @@ export async function POST (req: Request) {
                 email: '',
             }
         })
+
+        // ADD GROUP
         const groupId = nanoid();
         const groupData: GroupType = {
             externalFriends: convertedExternalFriends,
@@ -47,14 +53,14 @@ export async function POST (req: Request) {
             'new-group',
             '',
         )
+        await db.set(`group:${groupId}`, groupData);
+
+        // ADD GROUP TO ALL LOGGED FRIENDS
         for (const member of convertedLoggedFriends){
             await db.sadd(`user:${member.id}:groups`, groupId);
         }
-        await db.set(`group:${groupId}`, groupData);
-        // zakończono dodawać grupę
-        // dodawanie rezultatów losowania
 
-
+        // ADD DRAW RESULTS
         const drawMembers = convertedLoggedFriends.map((member) => {
             return {
                 name: member.name,
@@ -68,7 +74,6 @@ export async function POST (req: Request) {
         }))
         const drawResults = await getDrawResults(drawMembers);
         await db.set(`group:${groupId}:draw-result`, drawResults);
-
 
         return new Response('Ok')
     } catch (error) {

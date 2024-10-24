@@ -1,0 +1,81 @@
+
+  $Speed: 250ms;
+  $List-scrollbar-width: 0.35em;
+  $List-width: 400px;
+  $List-padding: 1em;
+  $Secondary-hue: 25;
+
+.toastList {
+  position: fixed;
+  padding: $List-padding;
+  width: 100%;
+  max-width: $List-width;
+  max-height: 100vh;
+  overflow: hidden auto;
+
+  &__topLeft {
+    top: 0;
+    left: 0;
+    &.toast{
+      animation: toastInLeft $Speed;
+    }
+  }
+  &__topRight {
+    top: 0;
+    right: 0;
+    &.toast{
+      animation: toastInRight $Speed;
+    }
+  }
+  &__bottomLeft {
+    bottom: 0;
+    left: 0;
+    &.toast{
+      animation: toastInLeft $Speed;
+    }
+  }
+  &__bottomRight {
+    bottom: 0;
+    right: 0;
+    &.toast{
+      animation: toastInRight $Speed;
+    }
+  }
+  &::-webkit-scrollbar {
+    width: $List-scrollbar-width;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: hsl($Secondary-hue 10% 75%);
+    border-radius: $List-scrollbar-width;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: $List-scrollbar-width;
+    background-color: hsl($Secondary-hue 10% 65%);
+  }
+  &::-webkit-scrollbar-thumb:window-inactive {
+    background-color: hsl($Secondary-hue 10% 50%);
+  }
+}
+
+.toast {
+  transition: transform $Speed, opacity $Speed,
+  box-shadow $Speed ease-in-out;
+}
+
+@keyframes toastInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes toastInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}

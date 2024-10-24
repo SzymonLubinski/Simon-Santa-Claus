@@ -27,3 +27,26 @@
     }
   }
 }
+
+.choosingPool{
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 1.3em;
+  margin-top: 10px;
+
+  & p{
+    cursor: pointer;
+
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+
+  &__yes{
+    color: green;
+  }
+
+  &__no{
+    color: darkred;
+  }
+}

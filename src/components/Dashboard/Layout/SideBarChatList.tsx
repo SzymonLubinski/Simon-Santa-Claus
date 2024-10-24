@@ -1,11 +1,10 @@
 'use client'
 
-import {FC, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {usePathname, useRouter} from "next/navigation";
 import {chatHrefConstructor, toPusherKey} from "@/lib/utils";
 import {pusherClient} from "@/lib/pusher";
 import Link from "next/link";
-import SelectImg from "@/components/UI/SelectImg";
 import styles from './ListStyles.module.scss';
 import {useDispatch} from "react-redux";
 import {setOn} from "@/redux/portalSlice";
@@ -21,7 +20,7 @@ interface ExtendedMessage extends Message{
     senderName: string;
 }
 
-const SideBarChatList: FC<SideBarChatListProps> = ({friends, userId, hideLayout}) => {
+const SideBarChatList = ({friends, userId, hideLayout}: SideBarChatListProps) => {
     const dispatch = useDispatch();
     const clickHandler = () => {
         dispatch(setOn());

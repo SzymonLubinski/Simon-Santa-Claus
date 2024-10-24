@@ -1,7 +1,7 @@
 'use client'
 
 import styles from './SendImageOrVideo.module.scss';
-import {FC, useEffect} from "react";
+import {useEffect} from "react";
 import axios from "axios";
 import {useForm, SubmitHandler} from "react-hook-form";
 import Image from "next/image";
@@ -15,7 +15,7 @@ type IFormInput = {
     selectedFiles: FileList;
 }
 
-const SendImageOrVideo: FC<SendImageOrVideoProps> = ({chatId}) => {
+const SendImageOrVideo = ({chatId}: SendImageOrVideoProps) => {
     const {register, handleSubmit, formState, watch, reset} = useForm<IFormInput>();
     const onSubmit: SubmitHandler<IFormInput> = async (data) => {
         const formData = new FormData();

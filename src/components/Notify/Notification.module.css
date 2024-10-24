@@ -1,0 +1,60 @@
+.notify {
+  box-shadow: 1px 5px 9px 0 rgb(66, 68, 90);
+  border-radius: 0.5em;
+  position: relative;
+  opacity: 0.8;
+  display: flex;
+  padding: 10px 20px;
+  font-size: 24px;
+}
+.notify:hover {
+  opacity: 1;
+  box-shadow: 1px 5px 9px 2px rgb(66, 68, 90);
+}
+.notify__message {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.notify__closeBtn {
+  min-width: 20px;
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.notify__closeBtn svg {
+  width: 100%;
+  height: auto;
+}
+
+.notify + .notify {
+  margin-top: 0.5em;
+}
+
+.notifySuccess {
+  color: black;
+  background-color: rgb(35, 180, 9);
+}
+.notifySuccess.icon--thumb {
+  color: black;
+}
+
+.notifyFailure {
+  color: black;
+  background-color: rgb(208, 65, 69);
+}
+.notifyFailure.icon--thumb {
+  color: black;
+}
+
+.notifyWarning {
+  color: black;
+  background-color: rgb(255, 217, 102);
+}
+.notifyWarning.icon--thumb {
+  color: black;
+}
+
+/*# sourceMappingURL=Notification.module.css.map */

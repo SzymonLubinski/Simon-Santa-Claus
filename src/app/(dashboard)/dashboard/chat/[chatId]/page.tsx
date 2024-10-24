@@ -32,13 +32,12 @@ async function getChatMessages(chatId: string) {
     }
 }
 
-
 const Page: FC<PageProps> = async ({params}) => {
     const {chatId} = params;
     const session = await getServerSession(authOptions);
     if (!session) notFound();
     let chatPartner;
-    let chatType;
+    let chatType: 'pair' | 'group';
     if (chatId.includes('--')){
         const [userId1, userId2] = chatId.split('--');
         if (session.user.id !== userId1 && session.user.id !== userId2) notFound();
@@ -58,8 +57,15 @@ const Page: FC<PageProps> = async ({params}) => {
     return (
         <div className={styles.chatPage}>
             <Profile chatPartner={chatPartner}/>
-            <Correspondence initialMessages={initialMessages} sessionId={session.user.id} chatId={chatId}/>
-            <ChatInput chatPartner={chatPartner} chatId={chatId} chatType={chatType}/>
+            <Correspondence initialMessages={initialMessages}
+                            sessionId={session.user.id}
+                            chatId={chatId}
+                            chatType={chatType}
+            />
+            <ChatInput chatPartner={chatPartner}
+                       chatId={chatId}
+                       chatType={chatType}
+            />
         </div>
     )
 }

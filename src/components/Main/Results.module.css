@@ -23,5 +23,23 @@
     font-size: 5vw;
   }
 }
+.choosingPool {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 1.3em;
+  margin-top: 10px;
+}
+.choosingPool p {
+  cursor: pointer;
+}
+.choosingPool p:hover {
+  text-decoration: underline;
+}
+.choosingPool__yes {
+  color: green;
+}
+.choosingPool__no {
+  color: darkred;
+}
 
 /*# sourceMappingURL=Results.module.css.map */

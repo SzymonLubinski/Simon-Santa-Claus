@@ -1,11 +1,6 @@
 .requests {
-  height: 50px;
   display: flex;
   align-items: center;
-}
-.requests svg {
-  height: 80%;
-  margin-right: 10px;
 }
 .requests__amount {
   margin-left: 10px;

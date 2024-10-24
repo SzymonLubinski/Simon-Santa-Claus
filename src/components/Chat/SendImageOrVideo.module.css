@@ -30,6 +30,7 @@
 .form__uploadImage {
   height: 100%;
   margin-left: 10px;
+  cursor: pointer;
 }
 .form__uploadImage svg {
   height: 100%;
@@ -37,6 +38,7 @@
 .form__uploadBtn {
   margin-left: 10px;
   height: 100%;
+  cursor: pointer;
 }
 .form__uploadBtn svg {
   height: 100%;

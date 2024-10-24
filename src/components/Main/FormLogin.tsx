@@ -9,11 +9,12 @@ import Alert from "@/components/UI/Alert";
 import axios from "axios";
 import  { AxiosError } from 'axios';
 import styles from './Form.module.scss';
-import LoadingBG from "@/components/Portal/LoadingBG";
+import {useDispatch} from "react-redux";
+import {setOn} from "@/redux/portalSlice";
 
 
 const FormLogin = () => {
-    const [loading, setLoading] = useState<boolean>(false);
+    const dispatch = useDispatch();
     const {register, handleSubmit, formState} = useForm<LoginFormTypes>();
     const [loginError, setLoginError] = useState<string | null | undefined>(null);
     const onSubmit: SubmitHandler<LoginFormTypes> = async (data) => {
@@ -21,7 +22,7 @@ const FormLogin = () => {
         try {
             const res = await axios.post('api/authorization', {credentials: data})
             if (res?.status === 200){
-                setLoading(true);
+                dispatch(setOn);
                 await signIn('credentials', {...data, redirect:true});
             } else {
                 console.log('res:', res)
@@ -36,7 +37,6 @@ const FormLogin = () => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-            {loading && <LoadingBG/>}
             <h1 className={styles.form__title}>Logowanie</h1>
             <label className={styles.form__formLabel}>Email</label>
             <input type={'email'} {...register('email', {

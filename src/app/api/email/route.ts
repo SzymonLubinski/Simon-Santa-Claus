@@ -5,7 +5,7 @@ import * as nodemailer from 'nodemailer'
 
 export async function POST (req: Request){
     try {
-        const {email, memberName, endowedName} = await req.json();
+        const {email, memberName, recipientName} = await req.json();
         let transporter: nodemailer.Transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
@@ -21,7 +21,7 @@ export async function POST (req: Request){
             html: `
                 <div>
                     <h1>Cześć ${memberName}</h1>
-                    <p>Osoba której wręczysz prezent to ${endowedName}</p>
+                    <p>Osoba której wręczysz prezent to ${recipientName}</p>
                 </div>
             `,
         });

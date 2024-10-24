@@ -50,6 +50,9 @@ interface DrawMember {
     id: string;
 }
 
-interface DrawResult extends DrawMember{
-    endowed: DrawMember;
+interface DrawResult{
+    recipient: DrawMember;
+    donor: DrawMember;
+    alreadyGiven: boolean;
+    giftPictureNum: number;
 }

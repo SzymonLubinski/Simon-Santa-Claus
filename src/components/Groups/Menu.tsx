@@ -1,53 +1,65 @@
 'use client'
 
 import styles from './Menu.module.scss';
-import {FC, useState} from "react";
+import {useState} from "react";
 import Link from "next/link";
-import MemberList from "@/components/Groups/MemberList";
-import GroupInfo from "@/components/Groups/GroupInfo";
+import TabMemberList from "@/components/Groups/TabMemberList";
+import TabEventInfo from "@/components/Groups/TabEventInfo";
 import {useDispatch} from "react-redux";
 import {setOff} from "@/redux/portalSlice";
+import DashboardTab from "@/components/Groups/DashboardTab";
+import TabChristmasTree from "@/components/Groups/TabChristmasTree";
 
 
-interface MenuProps{
+interface MenuProps {
     group: GroupType;
-    drawResults: DrawResult[] | null;
-    areYouCreator: boolean;
+    drawResults: DrawResult[];
+    userId: string;
 }
 
 
-const Menu: FC<MenuProps> = ({group, drawResults, areYouCreator}) => {
-    const [showingSection, setShowingSection] = useState<string>('list');
+const Menu = ({group, drawResults, userId}: MenuProps) => {
     const dispatch = useDispatch();
-
     dispatch(setOff());
+
+    const [showingSection, setShowingSection] = useState<string>('info');
+
     return (
         <div className={styles.menu}>
-            <h1>{group.name}</h1>
-            <div className={styles.cards}>
-                <div className={styles.card}>
+            <header className={styles.header}>
+                <div className={styles.header__bookmark}>
                     <Link href={`/dashboard/chat/${group.id}`}>
-                        Czat Grupowy
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 512 512">
+                                <path
+                                    d="M64 0C28.7 0 0 28.7 0 64L0 352c0 35.3 28.7 64 64 64l96 0 0 80c0 6.1 3.4 11.6 8.8 14.3s11.9 2.1 16.8-1.5L309.3 416 448 416c35.3 0 64-28.7 64-64l0-288c0-35.3-28.7-64-64-64L64 0z"/>
+                            </svg>
+                        </div>
                     </Link>
                 </div>
-                <div onClick={() => setShowingSection('info')} className={styles.card}>
-                    <p>Info Grupowe</p>
-                    {showingSection === 'info' && (
-                        <div className={styles.card__isActive}/>
-                    )}
+                <div onClick={() => setShowingSection('info')}
+                     className={`${styles.header__bookmark} ${showingSection === 'info' && styles.header__bookmark__active}`}>
+                    <DashboardTab activeTab={"info"}/>
                 </div>
-                <div onClick={() => setShowingSection('list')} className={styles.card}>
-                    <p>Lista Członków</p>
-                    {showingSection === 'list' && (
-                        <div className={styles.card__isActive}/>
-                    )}
+                <div onClick={() => setShowingSection('event')}
+                     className={`${styles.header__bookmark} ${showingSection === 'event' && styles.header__bookmark__active}`}>
+                    <DashboardTab activeTab={"event"}/>
                 </div>
-            </div>
-            {showingSection === 'list' && (
-                <MemberList group={group} drawResults={drawResults} areYouCreator={areYouCreator}/>
-            )}
+                <div onClick={() => setShowingSection('list')}
+                     className={`${styles.header__bookmark} ${showingSection === 'list' && styles.header__bookmark__active}`}>
+                    <DashboardTab activeTab={"list"}/>
+                </div>
+            </header>
+
             {showingSection === 'info' && (
-                <GroupInfo group={group}/>
+                <TabChristmasTree group={group} drawResults={drawResults} userId={userId}/>
+            )}
+            {showingSection === 'event' && (
+                <TabEventInfo group={group}/>
+            )}
+            {showingSection === 'list' && (
+                <TabMemberList group={group} drawResults={drawResults} userId={userId}/>
             )}
         </div>
     )

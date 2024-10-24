@@ -1,5 +1,6 @@
 'use client'
-import {FC, useEffect, useState} from "react";
+
+import {useEffect, useState} from "react";
 import Link from "next/link";
 import SelectImg from "@/components/UI/SelectImg";
 import SignOutButton from "@/components/UI/SignOutButton";
@@ -7,9 +8,7 @@ import FriendsRequestsSidebarOptions from "@/components/Dashboard/Friends/Friend
 import SideBarChatList from "@/components/Dashboard/Layout/SideBarChatList";
 import SideBarGroupList from "@/components/Dashboard/Layout/SideBarGroupList";
 import styles from './SideBar.module.scss';
-import LoadingBG from "@/components/Portal/LoadingBG";
-import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "@/redux/store";
+import {useDispatch} from "react-redux";
 import {setOn} from "@/redux/portalSlice";
 
 
@@ -22,14 +21,14 @@ interface SidebarOptions {
 }
 
 
-const SideBar: FC<SidebarOptions> = (
-    {friends, userId, userName, groups, unseenRequestCount}
+const SideBar = (
+    {friends, userId, userName, groups, unseenRequestCount} : SidebarOptions
 ) => {
-    const portalActive = useSelector((state: RootState) => state.portal.active);
+    // const portalActive = useSelector((state: RootState) => state.portal.active);
     const dispatch = useDispatch();
     const [width, setWidth] = useState(0)
-    const [showLayout, setShowLayout] = useState<boolean>(true);
-    const [showToggle, setShowToggle] = useState<boolean>(width < 760);
+    const [showLayout, setShowLayout] = useState<boolean>(false);
+    const [showToggle, setShowToggle] = useState<boolean>(width < 660);
     const layoutHandler = () => {
         setShowLayout(!showLayout);
     }
@@ -45,15 +44,12 @@ const SideBar: FC<SidebarOptions> = (
 
             if (width < 660 && !showToggle) {
                 setShowToggle(true);
-                console.log('1')
             }
             if (width >= 660 && showToggle) {
                 setShowToggle(false);
-                console.log('2')
             }
             if (width >= 660 && !showLayout) {
                 setShowLayout(true);
-                console.log('3')
             }
         }
 
@@ -65,11 +61,15 @@ const SideBar: FC<SidebarOptions> = (
         }
     }, [width, showLayout, showToggle])
 
+    const animation = showLayout ? styles.showToRight : styles.hideToLeft;
+
     return (
-        <div className={showLayout ? styles.container : `${styles.container} ${styles.hideToLeft}`}>
-            {portalActive && <LoadingBG/>}
+        <div className={`${styles.container} ${animation}`}>
+            {/*{portalActive && <LoadingBG/>}*/}
             <div className={styles.container__logo}>
-                <SelectImg selectedImg={'santa'} height={100}/>
+                <Link href={'/dashboard'}>
+                    <SelectImg selectedImg={'santa'}/>
+                </Link>
             </div>
             <ul className={styles.list}>
                 <li className={styles.list__requests}>
@@ -115,7 +115,7 @@ const SideBar: FC<SidebarOptions> = (
                 </li>
                 <li className={styles.list__sessionInfo}>
                     <div className={styles.sessionInfo}>
-                        <div className={styles.sessionInfo__img}>
+                        <div>
                             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
                                 <path
                                     d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/>
@@ -124,7 +124,7 @@ const SideBar: FC<SidebarOptions> = (
                         <div className={styles.sessionInfo__info}>
                             <p>{userName}</p>
                         </div>
-                        <div className={styles.sessionInfo__img}>
+                        <div>
                             <SignOutButton/>
                         </div>
                     </div>
@@ -133,7 +133,7 @@ const SideBar: FC<SidebarOptions> = (
             <div className={showLayout ? `${styles.toggle} ${styles.toggle__background}` : styles.toggle}
                  onClick={() => layoutHandler()}>
                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
-                    <path
+                    <path fill={'#bf9000'}
                         d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
                 </svg>
             </div>

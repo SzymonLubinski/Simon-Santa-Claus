@@ -1,6 +1,6 @@
 'use client'
 
-import {FC, useState} from "react";
+import {useState} from "react";
 import dayjs, {Dayjs} from "dayjs";
 import range from "lodash-es/range"
 import {isToDayOrGiftDay} from "@/helpers/functions";
@@ -11,7 +11,7 @@ interface CalendarProps {
     giftDay: Dayjs;
 }
 
-const Calendar:FC<CalendarProps> = ({giftDay}) => {
+const Calendar = ({giftDay}: CalendarProps) => {
     const [dayObj, setDayObj] = useState(dayjs());
     const thisYear = dayObj.year();
     const thisMonth = dayObj.month();

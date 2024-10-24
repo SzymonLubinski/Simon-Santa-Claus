@@ -1,29 +1,27 @@
 'use client'
 
-import {FC} from "react";
 import Image, {StaticImageData} from "next/image";
 import styles from './SelectImg.module.scss';
-import santaImg from '../../../public/logo.png';
-import userImg from '../../../public/icons/user-solid.svg';
-import LogOutImg from '../../../public/icons/arrow-right-from-bracket-solid.svg';
-import ImgIcon from '../../../public/icons/image-icon.svg';
-import Chain from '../../../public/home/wieniec2.png';
-import NextJs from '../../../public/icons/next.svg';
-import GitHub from '../../../public/icons/github-white.svg';
-import LinkedIn from '../../../public/icons/linkedin-white.svg';
-import Gmail from '../../../public/icons/gmail.svg';
-import Plus from  '../../../public/icons/plus-solid.svg';
-import ArrowRight from  '../../../public/icons/arrow-right-solid.svg';
-import Copy from  '../../../public/icons/copy.svg';
-import Plane from '../../../public/icons/paper-plane-solid.svg';
-import CheckOk from '../../../public/icons/ok.svg';
+import santaImg from '../../../public/images/logo.png';
+import userImg from '../../../public/images/icons/user-solid.svg';
+import LogOutImg from '../../../public/images/icons/arrow-right-from-bracket-solid.svg';
+import ImgIcon from '../../../public/images/icons/image-icon.svg';
+import NextJs from '../../../public/images/icons/next.svg';
+import GitHub from '../../../public/images/icons/github-white.svg';
+import LinkedIn from '../../../public/images/icons/linkedin-white.svg';
+import Gmail from '../../../public/images/icons/gmail.svg';
+import Plus from  '../../../public/images/icons/plus-solid.svg';
+import ArrowRight from  '../../../public/images/icons/arrow-right-solid.svg';
+import Copy from  '../../../public/images/icons/copy.svg';
+import Plane from '../../../public/images/icons/paper-plane-solid.svg';
+import CheckOk from '../../../public/images/icons/ok.svg';
 
 
 interface SelectImgProps {
     selectedImg: 'santa' | 'user' | 'logout' | 'image' | 'nextjs' | 'gmail'
-        | 'github' | 'linkedin' | 'chain' | 'plus' | 'arrow-right' | 'copy'
+        | 'github' | 'linkedin' | 'plus' | 'arrow-right' | 'copy'
         | 'plane' | 'ok';
-    height: number;
+    height?: number;
 }
 
 type imgItem = {
@@ -32,14 +30,13 @@ type imgItem = {
 }
 
 
-const SelectImg: FC<SelectImgProps> = ({selectedImg, height}) => {
+const SelectImg = ({selectedImg, height}: SelectImgProps) => {
 
     const imgList: imgItem[] = [
         {item: santaImg, command: 'santa'},
         {item: userImg, command: 'user'},
         {item: LogOutImg, command: 'logout'},
         {item: ImgIcon, command: 'image'},
-        {item: Chain, command: 'chain'},
         {item: LinkedIn, command: 'linkedin'},
         {item: GitHub, command: 'github'},
         {item: NextJs, command: 'nextjs'},

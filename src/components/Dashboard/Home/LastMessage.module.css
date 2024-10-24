@@ -1,0 +1,40 @@
+.chat {
+  border: 1px solid black;
+  display: flex;
+  margin-top: 10px;
+}
+.chat section {
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.chat svg {
+  width: 30px;
+  height: 30px;
+}
+.chat__text {
+  display: flex;
+  align-items: center;
+}
+.chat__text h3 {
+  margin-right: 5px;
+}
+.chat__text p {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 300px;
+  height: 1.2em;
+  white-space: nowrap;
+}
+.chat__text span {
+  font-size: 0.7em;
+}
+
+@media screen and (max-width: 760px) {
+  .chat {
+    padding: 0;
+  }
+}
+
+/*# sourceMappingURL=LastMessage.module.css.map */

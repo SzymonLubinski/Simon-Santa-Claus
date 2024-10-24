@@ -1,57 +1,56 @@
 .menu{
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
   font-family: Garamond, serif;
   max-height: 100vh;
 }
-.cards{
+
+.header{
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  margin: 20px 0;
-}
-
-.card{
-  display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  border: 3px solid darkred;
-  padding: 10px;
-  background: lightcoral;
-  &:hover{
-    background: #c70000;
-  }
-  &__isActive{
-    position: absolute;
-    width: 100px;
-    transform: translateY(30px);
-    border: 2px solid darkred;
-  }
-}
+  background: #7f8f97;
 
-@media screen and (max-width: 760px) {
-  .menu{
-    max-height: none;
-    margin-top: 50px;
-  }
-  .cards{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    background: #1abc9c;
-  }
-  .card{
-    width: 150px;
-    margin: 5px 10px;
+  &__bookmark{
+    padding: 20px;
+    cursor: pointer;
 
-    &__isActive{
-      height: 40px;
-      width: 2px;
-      transform: translateX(90px);
+    &:first-child{
+      margin-right: auto;
+    }
+
+    & div{
+
+      & svg{
+        display: flex;
+        align-items: center;
+        height: 50px;
+        width: 50px;
+      }
+    }
+
+    &__active{
+      background: white;
     }
   }
+}
+
+@media screen and (max-width: 360px) {
+  .header{
+    &__bookmark{
+      padding: 10px;
+      & div{
+
+        & svg{
+          display: flex;
+          align-items: center;
+          height: 30px;
+          width: 30px;
+        }
+      }
+    }
+  }
+
 }

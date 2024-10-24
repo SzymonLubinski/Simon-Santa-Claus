@@ -1,0 +1,71 @@
+$node-count: 5;
+$radius: 250px;
+$radiusMobile: 30vw;
+$bigSize: 800px;
+$smallSize: 90vw;
+$bigNode: 200px;
+$smallNode: 25vw;
+
+.flowchart {
+  position: relative;
+  width: $bigSize;
+  height: $bigSize;
+  //margin: 50px auto;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #245c75;
+
+  .logo{
+    height: 80%;
+    width: 80%;
+  }
+
+  .node {
+    position: absolute;
+    width: $bigNode;
+    height: $bigNode;
+    background-color: #f0f0f0;
+    border: 2px solid #333;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-family: Garamond, serif;
+
+    @for $i from 1 through $node-count {
+      &.node-#{$i} {
+        $angle: (360deg / $node-count) * ($i - 1);
+        transform: rotate($angle) translate($radius) rotate(-$angle);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1077px) {
+
+
+  .flowchart{
+    width: $smallSize;
+    height: $smallSize;
+    overflow: hidden;
+
+    .node {
+      width: $smallNode;
+      height: $smallNode;
+      font-size: clamp(0.8rem, 2vw, 3rem);
+
+      @for $i from 1 through $node-count {
+        &.node-#{$i} {
+          $angle: (360deg / $node-count) * ($i - 1);
+          transform: rotate($angle) translate($radiusMobile) rotate(-$angle);
+        }
+      }
+    }
+  }
+}

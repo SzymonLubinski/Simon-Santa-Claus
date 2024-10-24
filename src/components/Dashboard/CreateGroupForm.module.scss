@@ -28,7 +28,8 @@ $TabHeight: 300px;
     height: 30px;
     text-align: center;
   }
-  &__error{
+
+  &__error {
     color: red;
   }
 }
@@ -136,7 +137,7 @@ $TabHeight: 300px;
 .externalFriends {
   width: 50%;
 
-  &__container{
+  &__container {
     display: flex;
     width: 100%;
   }
@@ -162,29 +163,35 @@ $TabHeight: 300px;
     height: 40px;
     width: 100%;
     font-size: 1.2rem;
+    cursor: pointer;
   }
 
-  &__del{
+  &__del {
     height: 40px;
     width: 60px;
     background: #c70000;
+    cursor: pointer;
 
-    &:hover{
+    &:hover {
       background: #d74c4c;
     }
   }
 }
-.notEnough{
+
+.notEnough {
   width: 100%;
   text-align: center;
   color: red;
 }
-.submit{
+
+.submit {
   margin-top: 3rem;
   display: flex;
   justify-content: center;
-  &__input{
+
+  &__input {
     padding: 1rem 3rem;
+    cursor: pointer;
   }
 }
 
@@ -197,6 +204,7 @@ $TabHeight: 300px;
   }
   .friends {
     display: block;
+
     &__checkboxes {
       width: 100%;
     }

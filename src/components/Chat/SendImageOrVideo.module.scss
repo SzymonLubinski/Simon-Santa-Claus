@@ -32,6 +32,7 @@
   &__uploadImage{
     height: 100%;
     margin-left: 10px;
+    cursor: pointer;
 
     & svg{
       height: 100%;
@@ -41,6 +42,7 @@
   &__uploadBtn{
     margin-left: 10px;
     height: 100%;
+    cursor: pointer;
 
     & svg{
       height: 100%;

@@ -1,0 +1,66 @@
+
+  $Margin: 0.5em;
+  $Content-gap: 1em;
+  $Secondary-hue: 25;
+
+
+.notify {
+  box-shadow: 1px 5px 9px 0 rgba(66, 68, 90, 1);
+  border-radius: 0.5em;
+  position: relative;
+  opacity: 0.8;
+  display: flex;
+  padding: 10px 20px;
+  font-size: 24px;
+
+  &:hover {
+    opacity: 1;
+    box-shadow: 1px 5px 9px 2px rgba(66, 68, 90, 1);
+  }
+  &__message {
+    display: flex;
+    gap: $Content-gap;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  &__closeBtn {
+    min-width: 20px;
+    margin-left: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    & svg{
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.notify + .notify {
+  margin-top: $Margin;
+}
+
+.notifySuccess {
+  color: black;
+  background-color: rgb(35,180,9);
+  &.icon--thumb {
+    color: black;
+  }
+}
+
+.notifyFailure {
+  color: black;
+  background-color: rgb(208,65,69);
+  &.icon--thumb {
+    color: black;
+  }
+}
+
+.notifyWarning {
+  color: black;
+  background-color: rgb(255,217,102);
+  &.icon--thumb {
+    color: black;
+  }
+}

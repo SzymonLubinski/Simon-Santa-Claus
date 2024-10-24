@@ -18,10 +18,12 @@
   height: 60px;
   text-align: center;
   background: #4c626d;
+  overflow: hidden;
 }
 .imgContainer__circle svg {
-  border-radius: 50%;
-  height: 100%;
+  height: 90%;
+  position: relative;
+  transform: translateY(15%);
 }
 
 .inBorder {
@@ -44,9 +46,9 @@
   color: black;
   width: 100%;
 }
-.inBorder__link button {
-  height: 60px;
-  width: 55px;
+
+.blocked {
+  cursor: not-allowed;
 }
 
 .memberSection {
@@ -60,6 +62,9 @@
   border: 2px solid #bf9000;
   padding: 5px;
   font-size: 24px;
+}
+.memberSection svg {
+  height: 80%;
 }
 .memberSection__form {
   height: 100%;
@@ -76,10 +81,14 @@
 .memberSection__form_container input {
   height: 100%;
   width: 80%;
+  padding-left: 5px;
 }
 .memberSection__form_container button {
   height: 100%;
   width: 20%;
+}
+.memberSection__form button {
+  cursor: pointer;
 }
 .memberSection__pointer {
   cursor: pointer;
@@ -87,11 +96,8 @@
 .memberSection__displayNone {
   display: none;
 }
-.memberSection__afterGlow {
-  font-size: 24px;
-}
 .memberSection__link {
-  display: none;
+  display: flex;
   align-items: center;
   max-width: 100%;
   font-size: 1rem;
@@ -105,7 +111,9 @@
   background: #4c626d;
   border: 1px solid #bf9000;
   border-radius: 50%;
-  padding: 5px;
+  width: 60px;
+  height: 60px;
+  aspect-ratio: 1/1;
 }
 .memberSection__link_btn:hover {
   background: #7f8f97;

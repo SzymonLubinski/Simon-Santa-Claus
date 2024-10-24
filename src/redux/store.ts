@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import portalReducer from './portalSlice';
+import notifyReducer from './notifySlice';
 
 export const store = configureStore({
     reducer: {
-        portal: portalReducer
+        portal: portalReducer,
+        notify: notifyReducer,
     }
 })
 

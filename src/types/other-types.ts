@@ -23,3 +23,10 @@ export interface BackdropType extends onCloseType, onShowType{
 export interface PortalTypes extends BackdropType, ModalType {
 
 }
+export interface NotifyItem{
+    message: string;
+    type: 'success' | 'failure' | 'warning';
+}
+export interface NotifyProps extends NotifyItem{
+    id: number;
+}

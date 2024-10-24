@@ -1,18 +1,18 @@
-
-
 import {getServerSession} from "next-auth";
 import {authOptions} from "@/lib/auth";
 import {notFound} from "next/navigation";
 import {getFriendsByUserId} from "@/helpers/get-friends";
 import {fetchRedis} from "@/helpers/redis";
 import {chatHrefConstructor} from "@/lib/utils";
-import Link from "next/link";
+import DashboardHome from "@/components/Dashboard/Home/DashboardHome";
+import LastMessage from "@/components/Dashboard/Home/LastMessage";
 import styles from './dashboard.module.scss';
 
 
 const Page = async () => {
     const session = await getServerSession(authOptions);
     if (!session) notFound();
+
     const friends = await getFriendsByUserId(session.user.id);
     const friendsWithLastMessage = await Promise.all(
         friends.map(async (friend) => {
@@ -22,7 +22,7 @@ const Page = async () => {
                 -1,
                 -1,
             ) as string[];
-            if (lastMessageRaw === undefined){
+            if (lastMessageRaw === undefined) {
                 return
             }
             const lastMessage = JSON.parse(lastMessageRaw) as Message;
@@ -35,39 +35,31 @@ const Page = async () => {
 
     return (
         <div className={styles.pageContainer}>
-            {friendsWithLastMessage.length > 0 ? (
-                <ul className={styles.chatList}>
-                    {friendsWithLastMessage.map((friend) => {
-                        if (friend === undefined){
-                            return
-                        }
-                        return (
-                            <li key={friend.id} className={styles.chat}>
-                                <Link href={`/dashboard/chat/${chatHrefConstructor(
-                                    session.user.id,
-                                    friend.id
-                                )}`}>
-                                    <h1>{friend.name}</h1>
-                                    <div className={styles.chat__horizontal}>
-                                        <p>{friend.lastMessage.senderId === session.user.id ? 'Ty:' : ''}</p>
-                                        <p>{friend.lastMessage.text}</p>
-                                    </div>
-                                </Link>
-                            </li>
-                        )
-                    })}
-                </ul>
-            ) : (
-                <div className={styles.welcome}>
-                    <div className={styles.welcome__container}>
-                        <h1 className={styles.welcome__title}>
-                            Witaj {session.user.name}
-                        </h1>
-                        <p>
-                            Na tej stronie zorganizujesz swoje losowanie mikołajkowe
-                            i skontaktujesz się z przyjaciółmi
-                        </p>
-                    </div>
+            {/*<DashboardHome/>*/}
+            <div className={styles.welcome}>
+                <h4>Witaj</h4>
+                <h1>{session.user.name}</h1>
+            </div>
+            {friendsWithLastMessage.length > 0 && (
+                <div className={styles.activeMessages}>
+                    <p>Twoje ostatnie kontakty:</p>
+                    <ul className={styles.chatList}>
+                        {friendsWithLastMessage.map((friend) => {
+                            if (friend === undefined) {
+                                return
+                            }
+                            return (
+                                <LastMessage key={friend.id}
+                                             sessionUserId={session.user.id}
+                                             lastMessageSenderId={friend.lastMessage.senderId}
+                                             lastMessageText={friend.lastMessage.text}
+                                             friendId={friend.id}
+                                             friendName={friend.name}
+                                             lastMessageDate={friend.lastMessage.timestamp}
+                                />
+                            )
+                        })}
+                    </ul>
                 </div>
             )}
         </div>
