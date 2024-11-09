@@ -24,8 +24,12 @@ const Flowchart = () => {
                 />
             </div>
             {nodes.map((node, index) => (
-                <div key={node.id} className={`${styles.node} ${styles[`node-${index + 1}`]}`}>
-                    {node.label}
+                <div key={node.id}
+                     className={`${styles.node} ${styles[`node-${index + 1}`]}`}
+                >
+                    <p className={styles.text}>
+                        {node.label}
+                    </p>
                 </div>
             ))}
         </div>

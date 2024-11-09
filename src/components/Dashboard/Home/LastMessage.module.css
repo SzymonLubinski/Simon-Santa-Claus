@@ -1,21 +1,43 @@
+.container {
+  width: 100%;
+}
+
 .chat {
   border: 1px solid black;
   display: flex;
   margin-top: 10px;
+  width: 100%;
 }
 .chat section {
-  margin: 5px;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 5px;
+}
+.chat section:first-child {
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.chat section:last-child {
+  width: calc(100% - 30px);
 }
 .chat svg {
   width: 30px;
   height: 30px;
 }
+.chat__box {
+  display: flex;
+  max-width: 80%;
+}
 .chat__text {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 .chat__text h3 {
   margin-right: 5px;
@@ -23,7 +45,7 @@
 .chat__text p {
   text-overflow: ellipsis;
   overflow: hidden;
-  width: 300px;
+  max-width: 100%;
   height: 1.2em;
   white-space: nowrap;
 }

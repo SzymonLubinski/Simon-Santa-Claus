@@ -38,6 +38,14 @@ $smallNode: 25vw;
     font-size: clamp(1rem, 2vw, 1.5rem);
     font-family: Garamond, serif;
 
+
+
+    /* Other styles */
+    //height: 3em;
+    //border: solid 2px;
+    container-type: size;
+    overflow: hidden;
+
     @for $i from 1 through $node-count {
       &.node-#{$i} {
         $angle: (360deg / $node-count) * ($i - 1);
@@ -45,6 +53,11 @@ $smallNode: 25vw;
       }
     }
   }
+}
+
+.text{
+  font-size: 13cqmin;
+  text-wrap: wrap;
 }
 
 @media screen and (max-width: 1077px) {

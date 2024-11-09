@@ -27,20 +27,37 @@
     display: flex;
     justify-content: right;
     text-align: right;
+    width: 100%;
   }
 
   &__container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 3px;
+    //display: flex;
+    //flex-direction: column;
+    //justify-content: center;
+    //align-items: center;
+    display: block;
+    width: 50px;
+
+    & div{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & svg{
+        width: 30px;
+        height: 30px;
+      }
+    }
   }
 
   &__text{
-    border: 2px solid black;
-    padding: 5px;
+    border: 2px solid rgba(0,0,0,0.2);
     font-size: 18px;
-    border-radius: 15%;
+    padding: 5px;
+    //max-width: calc(100% - 170px);
+    max-width: calc(100% - 70px);
+    word-wrap: break-word;
+    height: 100%;
   }
 
   &__file{
@@ -61,6 +78,7 @@
 
   &__time{
     font-size: 14px;
+    text-align: center;
   }
 }
 
@@ -69,11 +87,6 @@
 
     &__messages{
       padding: 0;
-    }
-  }
-  .message{
-    &__container{
-      display: block;
     }
   }
 }

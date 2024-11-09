@@ -25,18 +25,28 @@
   display: flex;
   justify-content: right;
   text-align: right;
+  width: 100%;
 }
 .message__container {
+  display: block;
+  width: 50px;
+}
+.message__container div {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 3px;
+}
+.message__container div svg {
+  width: 30px;
+  height: 30px;
 }
 .message__text {
-  border: 2px solid black;
-  padding: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
   font-size: 18px;
-  border-radius: 15%;
+  padding: 5px;
+  max-width: calc(100% - 70px);
+  word-wrap: break-word;
+  height: 100%;
 }
 .message__file {
   position: relative;
@@ -54,14 +64,12 @@
 }
 .message__time {
   font-size: 14px;
+  text-align: center;
 }
 
 @media screen and (max-width: 760px) {
   .container__messages {
     padding: 0;
-  }
-  .message__container {
-    display: block;
   }
 }
 

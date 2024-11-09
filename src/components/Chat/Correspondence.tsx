@@ -1,6 +1,6 @@
 'use client'
 
-import {FC, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import Image from "next/image";
 import dayjs from "dayjs";
 import {pusherClient} from "@/lib/pusher";
@@ -18,7 +18,7 @@ interface CorrespondenceProps {
     groupPartner?: GroupType;
 }
 
-const Correspondence: FC<CorrespondenceProps> = ({initialMessages, sessionId, chatId}) => {
+const Correspondence = ({initialMessages, sessionId, chatId}: CorrespondenceProps) => {
     const dispatch = useDispatch();
 
     const [messages, setMessages] = useState<Message[]>(initialMessages);
@@ -48,10 +48,15 @@ const Correspondence: FC<CorrespondenceProps> = ({initialMessages, sessionId, ch
                                         <div className={styles.message__user}>
                                             <div className={styles.message__container}>
                                                 <div>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                                         viewBox="0 0 448 512">
+                                                        <path
+                                                            d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/>
                                                     </svg>
                                                 </div>
-                                                <p className={styles.message__time}>{messageTime.format('HH:mm')}</p>
+                                                <p className={styles.message__time}>
+                                                    {messageTime.format('HH:mm')}
+                                                </p>
                                             </div>
                                             <div className={styles.message__file}>
                                                 <Image src={message.text}
@@ -69,10 +74,15 @@ const Correspondence: FC<CorrespondenceProps> = ({initialMessages, sessionId, ch
                                         <div className={styles.message__user}>
                                             <div className={styles.message__container}>
                                                 <div>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                                         viewBox="0 0 448 512">
+                                                        <path
+                                                            d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/>
                                                     </svg>
                                                 </div>
-                                                <p className={styles.message__time}>{messageTime.format('HH:mm')}</p>
+                                                <p className={styles.message__time}>
+                                                    {messageTime.format('HH:mm')}
+                                                </p>
                                             </div>
                                             <div className={styles.message__file}>
                                                 <video src={message.text}
@@ -89,12 +99,19 @@ const Correspondence: FC<CorrespondenceProps> = ({initialMessages, sessionId, ch
                                     <div className={styles.message__user}>
                                         <div className={styles.message__container}>
                                             <div>
-                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/>
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                                     viewBox="0 0 448 512">
+                                                    <path
+                                                        d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/>
                                                 </svg>
                                             </div>
-                                            <span className={styles.message__time}>{messageTime.format('HH:mm')}</span>
+                                            <p className={styles.message__time}>
+                                                {messageTime.format('HH:mm')}
+                                            </p>
                                         </div>
-                                        <p className={styles.message__text}>{message.text}</p>
+                                        <p className={styles.message__text}>
+                                            {message.text}
+                                        </p>
                                     </div>
                                 </div>
                             )
@@ -111,10 +128,15 @@ const Correspondence: FC<CorrespondenceProps> = ({initialMessages, sessionId, ch
                                         </div>
                                         <div className={styles.message__container}>
                                             <div>
-                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/>
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                                     viewBox="0 0 448 512">
+                                                    <path
+                                                        d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/>
                                                 </svg>
                                             </div>
-                                            <p className={styles.message__time}>{messageTime.format('HH:mm')}</p>
+                                            <p className={styles.message__time}>
+                                                {messageTime.format('HH:mm')}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -127,10 +149,15 @@ const Correspondence: FC<CorrespondenceProps> = ({initialMessages, sessionId, ch
                                         <video src={message.text} height={300} width={400}/>
                                         <div className={styles.message__container}>
                                             <div>
-                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/>
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                                     viewBox="0 0 448 512">
+                                                    <path
+                                                        d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/>
                                                 </svg>
                                             </div>
-                                            <p className={styles.message__time}>{messageTime.format('HH:mm')}</p>
+                                            <p className={styles.message__time}>
+                                                {messageTime.format('HH:mm')}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -139,13 +166,19 @@ const Correspondence: FC<CorrespondenceProps> = ({initialMessages, sessionId, ch
                         return (
                             <div key={message.id} className={styles.message}>
                                 <div className={styles.message__friend}>
-                                    <span className={styles.message__text}>{message.text}</span>
+                                    <span className={styles.message__text}>
+                                        {message.text}
+                                    </span>
                                     <div className={styles.message__container}>
                                         <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/>
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+                                                <path
+                                                    d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/>
                                             </svg>
                                         </div>
-                                        <p className={styles.message__time}>{messageTime.format('HH:mm')}</p>
+                                        <p className={styles.message__time}>
+                                            {messageTime.format('HH:mm')}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
