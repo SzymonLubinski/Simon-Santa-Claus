@@ -37,7 +37,6 @@ const SideBar = (
         setShowLayout(false);
     }
 
-
     useEffect(() => {
         function handleResize() {
             setWidth(window.innerWidth)

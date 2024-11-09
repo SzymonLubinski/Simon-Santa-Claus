@@ -43,7 +43,7 @@
   flex-wrap: wrap;
   width: 80%;
   position: absolute;
-  top: 65vh;
+  bottom: 5px;
 }
 .gifts__info {
   display: none;
