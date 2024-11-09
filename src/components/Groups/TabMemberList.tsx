@@ -5,6 +5,9 @@ import {useEffect, useState} from "react";
 import {checkEveryoneHasEmail} from "@/helpers/functions";
 import axios from "axios";
 import MemberCard from "@/components/Groups/MemberCard";
+import {handleAddNotify} from "@/helpers/notifications";
+import {useDispatch} from "react-redux";
+import NotifyList from "@/components/Notify/NotifyList";
 
 
 interface MemberListProps {
@@ -15,6 +18,7 @@ interface MemberListProps {
 
 
 const TabMemberList = ({group, drawResults, userId}: MemberListProps) => {
+    const dispatch = useDispatch();
     const [hasEveryoneEmail, setHasEveryoneEmail] = useState<boolean>(true);
     const friends = [...group.loggedFriends, ...group.externalFriends];
     const sendEmail = async (email: string, memberName: string) => {
@@ -29,8 +33,18 @@ const TabMemberList = ({group, drawResults, userId}: MemberListProps) => {
                 memberName: memberName,
                 recipientName: member.recipient.name,
             })
+
+            handleAddNotify({
+                message: 'Wysłano email!',
+                type: "success",
+            }, dispatch);
+
         } catch (error) {
             console.error(error);
+            handleAddNotify({
+                message: 'Błąd w wysłaniu emaila!',
+                type: "failure",
+            }, dispatch);
         }
     }
 
@@ -69,6 +83,7 @@ const TabMemberList = ({group, drawResults, userId}: MemberListProps) => {
                     />
                 ))}
             </ul>
+            <NotifyList position={'top-right'}/>
         </div>
     )
 }

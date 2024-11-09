@@ -25,7 +25,7 @@ const MemberCard = ({member, groupId, def, userAccess}: MemberCardProps) => {
     const [showEmailForm, setShowEmailForm] = useState<boolean>(false);
     const [copied, setCopied] = useState<boolean>(false);
     const hasEmail = member.email.length > 0;
-    const linkToResult = `http://localhost:3000/draw/${groupId}---${member.id}`;
+    const linkToResult = `https://simon-santa-claus.vercel.app/draw/${groupId}---${member.id}`;
 
     const {register, reset, handleSubmit, formState} = useForm<IFormInput>()
     const router = useRouter();

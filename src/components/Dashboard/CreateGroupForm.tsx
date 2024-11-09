@@ -2,12 +2,16 @@
 
 import {useForm, SubmitHandler, useFieldArray} from "react-hook-form";
 import {useEffect, useState} from "react";
-import axios from "axios";
+import axios, {AxiosError} from "axios";
 import Alert from "@/components/UI/Alert";
 import {useRouter} from "next/navigation";
 import {useDispatch} from "react-redux";
 import {setOff} from "@/redux/portalSlice";
 import styles from './CreateGroupForm.module.scss';
+import NotifyList from "@/components/Notify/NotifyList";
+import {addFriendValidator} from "@/lib/validation/add-friend";
+import {handleAddNotify} from "@/helpers/notifications";
+import {z} from "zod";
 
 
 interface IFormInput {
@@ -27,33 +31,69 @@ interface CreateGroupFormProps {
 const CreateGroupForm = ({friends}: CreateGroupFormProps) => {
     const dispatch = useDispatch();
     const router = useRouter();
-    const [notEnoughMembers, setNotEnoughMembers] = useState<boolean>(false);
-    const {register, reset, handleSubmit, formState, watch, control} = useForm<IFormInput>()
+    // const [notEnoughMembers, setNotEnoughMembers] = useState<boolean>(false);
+    const [showSuccessState, setShowSuccessState] = useState<boolean>(false);
+    const {
+        register, reset, handleSubmit, formState, watch, control, setError
+    } = useForm<IFormInput>()
+
+
     const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-        const loggedFriendsWithoutNull = data.loggedFriends.filter(
-            friend => friend.name !== false
-        )
-        const loggedFriendIds = loggedFriendsWithoutNull.map((friend) => {
-            return friend.name
-        })
-        const externalFriendNames = data.externalFriends.map((friend) => {
-            return friend.name
-        })
-        if (loggedFriendIds.length + externalFriendNames.length < 2) {
-            console.log('za mało użytkowników')
-            setNotEnoughMembers(true);
-            return;
-        }
-        await axios.post('/api/groups/add', {
-            data: {
-                externalFriends: externalFriendNames,
-                loggedFriends: loggedFriendIds,
-                name: data.groupName,
-                minBudget: data.minBudget,
-                maxBudget: data.maxBudget,
-                giftDay: data.giftDay,
+        try {
+            const loggedFriendsWithoutNull = data.loggedFriends.filter(
+                friend => friend.name !== false
+            )
+            const loggedFriendIds = loggedFriendsWithoutNull.map((friend) => {
+                return friend.name
+            })
+            const externalFriendNames = data.externalFriends.map((friend) => {
+                return friend.name
+            })
+            if (loggedFriendIds.length + externalFriendNames.length < 2) {
+                console.log('za mało użytkowników')
+                handleAddNotify({
+                    message: 'minimum 3 uczestników!',
+                    type: "failure",
+                }, dispatch);
+                return;
             }
-        })
+            await axios.post('/api/groups/add', {
+                data: {
+                    externalFriends: externalFriendNames,
+                    loggedFriends: loggedFriendIds,
+                    name: data.groupName,
+                    minBudget: data.minBudget,
+                    maxBudget: data.maxBudget,
+                    giftDay: data.giftDay,
+                }
+            })
+            handleAddNotify({
+                message: `dodano grupę: ${data.groupName}`,
+                type: "success",
+            }, dispatch);
+        } catch (err) {
+            if (err instanceof z.ZodError) {
+                setError('groupName', {message: err.message});
+                handleAddNotify({
+                    message: err.message,
+                    type: "failure",
+                }, dispatch);
+                return;
+            }
+            if (err instanceof AxiosError) {
+                setError('groupName', {message: err.response?.data});
+                handleAddNotify({
+                    message: err.response?.data,
+                    type: "failure",
+                }, dispatch);
+                return;
+            }
+            setError('groupName', {message: 'something went wrong'})
+            handleAddNotify({
+                message: 'something went wrong',
+                type: "failure",
+            }, dispatch);
+        }
         router.refresh();
     }
 
@@ -77,19 +117,26 @@ const CreateGroupForm = ({friends}: CreateGroupFormProps) => {
         }
         append({name: ''});
     };
-    useEffect(() => {
-        if (formState.isSubmitSuccessful) {
-            reset({
-                maxBudget: 0,
-                minBudget: 0,
-                loggedFriends: [],
-                externalFriends: [],
-                groupName: '',
-            })
-        }
-    }, [formState, reset])
+    // useEffect(() => {
+    //     // console.log(formState)
+    //     if (formState.isSubmitSuccessful && formState.isValid) {
+    //         reset({
+    //             maxBudget: 0,
+    //             minBudget: 0,
+    //             loggedFriends: [],
+    //             externalFriends: [],
+    //             groupName: '',
+    //         })
+    //     }
+    // }, [formState, reset])
 
     dispatch(setOff());
+
+    if (showSuccessState){
+        return (
+            <p>Twoja grupa jest już dodana!</p>
+        )
+    }
     return (
         <div className={styles.createGroupContainer}>
             <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
@@ -175,6 +222,7 @@ const CreateGroupForm = ({friends}: CreateGroupFormProps) => {
                 <div className={styles.friends}>
                     {friends.length > 0 ? (
                         <div className={styles.friends__checkboxes}>
+                            <p className={styles.middleTitle}>Dodaj znajomych do grupy</p>
                             <ul className={styles.friends__list}>
                                 {friends.map((friend, i) => {
                                     return (
@@ -196,11 +244,13 @@ const CreateGroupForm = ({friends}: CreateGroupFormProps) => {
                         </div>
                     ) : (
                         <div>
-                            <p>Aktualnie nie masz znajomych w serwisie Simon Santa</p>
+                        <p>Aktualnie nie masz znajomych w serwisie Simon Santa</p>
                             <p>Możesz dodać ich w sekcji Dodaj Znajomego</p>
                         </div>
                     )}
+
                     <div className={styles.externalFriends}>
+                        <p className={styles.middleTitle}>Dodaj niezalogowanych użytkowników do grupy</p>
                         <div className={styles.externalFriends__add}>
                             {controlledFields.map((field, i) => {
                                 return (
@@ -229,15 +279,16 @@ const CreateGroupForm = ({friends}: CreateGroupFormProps) => {
                         </div>
                     </div>
                 </div>
-                {notEnoughMembers && (
-                    <div className={styles.notEnough}>
-                        <Alert alertText={'Not enough members (min 3)'}/>
-                    </div>
-                )}
+                {/*{notEnoughMembers && (*/}
+                {/*    <div className={styles.notEnough}>*/}
+                {/*        <Alert alertText={'Not enough members (min 3)'}/>*/}
+                {/*    </div>*/}
+                {/*)}*/}
                 <div className={styles.submit}>
                     <input className={styles.submit__input} type={'submit'}/>
                 </div>
             </form>
+            <NotifyList position={'top-right'}/>
         </div>
     )
 }

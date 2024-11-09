@@ -1,10 +1,10 @@
 'use client'
 
-import styles from './Background.module.scss';
 import {ReactNode} from "react";
 import Wreath from '../../../public/images/backgroundWreath.jpg';
 import Image from "next/image";
 import Link from "next/link";
+import styles from './Background.module.scss';
 
 
 interface BackgroundProps{
@@ -18,7 +18,7 @@ const Background = ({children}: BackgroundProps) => {
         <div className={styles.background}>
             <div className={styles.background__header}>
                 <Link href={'/'}>
-                    <h1>Simon Santa Claus</h1>
+                    <h3>Simon Santa Claus</h3>
                 </Link>
             </div>
             <div className={styles.background__imgContainer}>

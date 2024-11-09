@@ -13,6 +13,7 @@ import {toPusherKey} from "@/lib/utils";
 
 export async function POST(req: Request) {
     const session = await getServerSession(authOptions);
+    console.log('upload #1')
     if (!session) {
         return new Response('Unauthorized', {status: 401});
     }

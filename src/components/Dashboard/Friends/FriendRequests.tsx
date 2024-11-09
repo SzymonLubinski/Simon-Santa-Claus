@@ -1,6 +1,6 @@
 'use client'
 
-import {FC, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import SelectImg from "@/components/UI/SelectImg";
 import styles from './FriendRequests.module.scss';
 import axios from "axios";
@@ -16,10 +16,11 @@ interface FriendRequestProps {
     sessionId: string;
 }
 
-const FriendRequests: FC<FriendRequestProps> = (
-    {IncomingFriendRequests, sessionId}
+const FriendRequests = (
+    {IncomingFriendRequests, sessionId}: FriendRequestProps
 ) => {
     const dispatch = useDispatch();
+    const router = useRouter();
     const [friendRequests, setFriendRequests] = useState<IncomingFriendRequest[]>(
         IncomingFriendRequests
     );
@@ -35,8 +36,6 @@ const FriendRequests: FC<FriendRequestProps> = (
         }
     }, [sessionId]);
 
-
-    const router = useRouter();
     const acceptFriend = async (senderId: string) => {
         await axios.post('/api/friends/accept', {
             id: senderId
@@ -46,7 +45,6 @@ const FriendRequests: FC<FriendRequestProps> = (
         );
         router.refresh();
     }
-
 
     const denyFriend = async (senderId: string) => {
         await axios.post('/api/friends/deny', {
@@ -68,18 +66,26 @@ const FriendRequests: FC<FriendRequestProps> = (
             ) : (
                 <div className={styles.container}>
                     <h1 className={styles.container__title}>Nowe zaproszenia</h1>
-                    {friendRequests.map((request) => (
-                        <div key={request.senderId} className={styles.request}>
-                            <SelectImg selectedImg={'user'} height={50}/>
-                            <p className={styles.request__text}>{request.senderEmail}</p>
-                            <button onClick={() => acceptFriend(request.senderId)}
-                                    className={styles.request__btn}>dodaj
-                            </button>
-                            <button onClick={() => denyFriend(request.senderId)}
-                                    className={styles.request__btn}>usuń
-                            </button>
-                        </div>
-                    ))}
+                    <div className={styles.requests}>
+                        {friendRequests.map((request) => (
+                            <div key={request.senderId}
+                                 className={styles.requests__el}
+                            >
+                                <section>
+                                    <SelectImg selectedImg={'user'} height={50}/>
+                                    <p>{request.senderEmail}</p>
+                                </section>
+                                <section>
+                                    <button onClick={() => acceptFriend(request.senderId)}
+                                            className={styles.requests__btn}>dodaj
+                                    </button>
+                                    <button onClick={() => denyFriend(request.senderId)}
+                                            className={styles.requests__btn}>usuń
+                                    </button>
+                                </section>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             )}
         </>

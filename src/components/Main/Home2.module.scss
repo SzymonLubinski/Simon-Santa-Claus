@@ -82,8 +82,14 @@
 
 @media screen and (max-width: 800px) {
   .welcome{
+
+    & h1{
+      font-size: 1.5em;
+    }
+
     &__2{
       text-align: center;
+      font-size: 0.8em;
     }
 
     &__3 {

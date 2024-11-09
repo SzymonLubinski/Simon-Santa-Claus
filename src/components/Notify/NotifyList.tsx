@@ -1,4 +1,6 @@
-import {FC, useEffect, useRef} from "react";
+'use client'
+
+import {useEffect, useRef} from "react";
 import Notification from "@/components/Notify/Notification";
 import {NotifyProps} from "@/types/other-types";
 import {useSelector} from "react-redux";
@@ -10,7 +12,7 @@ interface NotifyListProps{
     position: 'top-left' | 'top-right' | 'bottom-right' | 'bottom-left';
 }
 
-const NotifyList:FC<NotifyListProps> = ({position}) => {
+const NotifyList = ({position}: NotifyListProps) => {
     const listRef = useRef(null);
     const notifications = useSelector((state: RootState) => state.notify.notifications);
     const handleScrolling = (el: any) => {

@@ -1,8 +1,9 @@
 .itemList {
-  overflow: auto;
   list-style: none;
+  height: 20vh;
+  overflow-y: auto;
 }
-.itemList li {
+.itemList__item {
   margin: 5px 0;
 }
 .itemList__link {
@@ -10,18 +11,6 @@
   display: flex;
   justify-content: left;
   align-items: center;
-}
-.itemList__link svg {
-  height: 40px;
-  margin-right: 10px;
-}
-.itemList__unseen {
-  margin-left: 10px;
-  border: 1px solid white;
-  border-radius: 50%;
-  height: 20px;
-  width: 20px;
-  text-align: center;
 }
 
 @media screen and (max-width: 760px) {

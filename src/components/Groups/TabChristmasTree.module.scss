@@ -61,7 +61,7 @@
   &__el{
     position: relative;
     width: 10vw;
-    min-width: 70px;
+    min-width: 60px;
     max-width: 100px;
     aspect-ratio: 1 / 1;
 
@@ -79,7 +79,7 @@
 
 @media screen and (max-width: 940px) {
   .gifts{
-    width: 90%;
+    width: 95%;
 
     &__info{
       font-size: 1em;

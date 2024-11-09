@@ -1,6 +1,6 @@
 'use client'
 
-import {FC, useState} from 'react';
+import {useState} from 'react';
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import axios, {AxiosError} from "axios";
@@ -13,13 +13,9 @@ import NotifyList from "@/components/Notify/NotifyList";
 import {handleAddNotify} from "@/helpers/notifications";
 
 
-interface AddFriendButtonProps {
-}
-
 type FormData = z.infer<typeof addFriendValidator>
 
-
-const AddFriendButton: FC<AddFriendButtonProps> = ({}) => {
+const AddFriendButton = () => {
     const dispatch = useDispatch();
     // w przyszłości można wykorzystać tylko jedno powiadomienie 'Notify' lub 'setShow'
     const [showSuccessState, setShowSuccessState] = useState<boolean>(false);

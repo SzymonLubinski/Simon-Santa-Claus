@@ -5,7 +5,11 @@
   opacity: 0.8;
   display: flex;
   padding: 10px 20px;
-  font-size: 24px;
+  font-size: 2em;
+}
+.notify svg {
+  width: 30px;
+  height: 30px;
 }
 .notify:hover {
   opacity: 1;
@@ -23,10 +27,6 @@
   background: none;
   border: none;
   cursor: pointer;
-}
-.notify__closeBtn svg {
-  width: 100%;
-  height: auto;
 }
 
 .notify + .notify {
@@ -55,6 +55,12 @@
 }
 .notifyWarning.icon--thumb {
   color: black;
+}
+
+@media screen and (max-width: 760px) {
+  .notify {
+    font-size: 1em;
+  }
 }
 
 /*# sourceMappingURL=Notification.module.css.map */

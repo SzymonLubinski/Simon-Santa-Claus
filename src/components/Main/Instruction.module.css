@@ -58,6 +58,9 @@
   min-width: 300px;
   margin-right: 30px;
 }
+.steps__img {
+  margin-top: 10px;
+}
 .steps__link {
   font-size: 2rem;
   color: #c70000;

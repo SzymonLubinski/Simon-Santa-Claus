@@ -66,7 +66,7 @@ const SideBar = (
         <div className={`${styles.container} ${animation}`}>
             {/*{portalActive && <LoadingBG/>}*/}
             <div className={styles.container__logo}>
-                <Link href={'/dashboard'}>
+                <Link href={'/dashboard'} onClick={layoutHandler}>
                     <SelectImg selectedImg={'santa'}/>
                 </Link>
             </div>
@@ -83,6 +83,7 @@ const SideBar = (
                     </Link>
                     <FriendsRequestsSidebarOptions initialUnseenRequestCount={unseenRequestCount}
                                                    sessionId={userId}
+                                                   hideLayout={layoutHandler}
                     />
                 </li>
                 <li className={styles.list__friends}>

@@ -15,7 +15,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 20vh;
+  height: 10vh;
 }
 .container__logo a {
   position: relative;
@@ -28,7 +28,7 @@
 }
 
 .list {
-  height: 80vh;
+  height: 90vh;
   margin: 0;
   padding: 0;
   list-style-type: none;
@@ -41,7 +41,6 @@
 }
 .list__sessionInfo {
   margin-top: auto;
-  height: 10vh;
 }
 .list__add {
   display: flex;
@@ -53,7 +52,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100%;
+  height: 60px;
   width: 100%;
 }
 .sessionInfo__info {
@@ -69,10 +68,11 @@
   display: none;
   background: none;
   transition: background-color 0.5s;
+  background: rgba(159, 186, 223, 0.3);
 }
 .toggle svg {
   width: 100%;
-  margin-right: 5px;
+  margin: 5px;
 }
 .toggle__background {
   background: rgba(159, 186, 223, 0.7);
@@ -93,7 +93,6 @@
   }
   .container {
     min-width: 100px;
-    max-height: none;
     position: absolute;
     z-index: 2;
     width: 90vw;
@@ -106,13 +105,8 @@
     list-style: none;
     width: 90%;
   }
-  .list__add {
-    display: flex;
-    align-items: center;
-  }
-  .list__friends, .list__groups {
-    display: flex;
-    flex-flow: column;
+  .list__requests, .list__friends, .list__groups, .list__sessionInfo {
+    padding: 5px;
   }
 }
 

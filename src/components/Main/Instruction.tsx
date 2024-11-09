@@ -36,7 +36,7 @@ const Instruction = ({}: InstructionProps) => {
                     <div className={styles.steps__step}>
                         <div className={styles.steps__info}>
                             <h1>Krok 1</h1>
-                            <p>Zaloguj się do serwisu</p>
+                            <h3>Zaloguj się do serwisu</h3>
                             <p>
                                 Przynajmniej jedna osoba, która utworzy grupę powinna
                                 być zarejestrowana. Zrobisz to szybko i sprawnie tutaj:
@@ -54,7 +54,7 @@ const Instruction = ({}: InstructionProps) => {
                     <div className={styles.steps__step}>
                         <div className={styles.steps__info}>
                             <h1>Krok 2</h1>
-                            <p>Zaproś znajomych</p>
+                            <h3>Zaproś znajomych</h3>
                             <p>
                                 Jeśli twoi znajomi będą również zarejstrowani w naszym
                                 serwisie, możesz ich dodać. Dzięki temu będziecie mogli
@@ -68,10 +68,10 @@ const Instruction = ({}: InstructionProps) => {
                     <div className={styles.steps__step}>
                         <div className={styles.steps__info}>
                             <h1>Krok 3</h1>
-                            <p>Stwórz grupę</p>
+                            <h3>Stwórz grupę</h3>
                             <p>
                                 Tworząc grupę możesz dodać do niej zalogowanych znajomych
-                                lub osoby niezalogowane poprostu podając ich imiona lub ksywki
+                                lub osoby niezalogowane poprostu podając ich imiona lub ksywki.
                             </p>
                         </div>
                         <div className={styles.steps__img}>
@@ -81,7 +81,7 @@ const Instruction = ({}: InstructionProps) => {
                     <div className={styles.steps__step}>
                         <div className={styles.steps__info}>
                             <h1>Krok 4</h1>
-                            <p>Przeprowadź losowanie</p>
+                            <h3>Przeprowadź losowanie</h3>
                             <p>
                                 Nasza strona wylosuje każdemu członkowi osobę, której powinien
                                 kupić prezent. Twórca grupy może poinformować każdego emailem
