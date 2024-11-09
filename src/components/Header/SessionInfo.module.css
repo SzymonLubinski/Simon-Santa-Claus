@@ -6,6 +6,9 @@
   background: rgba(153, 153, 153, 0.5);
   border-bottom-left-radius: 20px;
 }
+.profile__text {
+  text-align: center;
+}
 .profile__loggedOut {
   width: 100%;
   display: flex;
@@ -15,7 +18,7 @@
 .profile__link {
   width: 150px;
   font-family: Garamond, serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: bold;
   display: flex;
   justify-content: center;

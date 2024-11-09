@@ -9,17 +9,13 @@
 .header{
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   background: #7f8f97;
 
   &__bookmark{
     padding: 20px;
     cursor: pointer;
-
-    &:first-child{
-      margin-right: auto;
-    }
 
     & div{
 

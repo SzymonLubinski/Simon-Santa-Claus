@@ -9,16 +9,13 @@
 .header {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   background: #7f8f97;
 }
 .header__bookmark {
   padding: 20px;
   cursor: pointer;
-}
-.header__bookmark:first-child {
-  margin-right: auto;
 }
 .header__bookmark div svg {
   display: flex;

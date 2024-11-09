@@ -26,7 +26,7 @@ const SessionInfo = ({userName}: SessionInfoProps) => {
                 <div className={styles.profile__loggedOut}>
                     <div className={styles.profile__link}>
                         <Link href={'/login'} onClick={() => dispatch(setOn())}>
-                            Zaloguj się
+                            <p className={styles.profile__text}>Zaloguj się</p>
                         </Link>
                     </div>
                 </div>
