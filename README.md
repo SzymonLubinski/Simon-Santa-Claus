@@ -1,5 +1,5 @@
 ## Simon Santa Claus
-I present my first website created in TypeScript. This restaurant's website is inspired by the character of Logan Kapuchino played by the streamer Paris Platynov on Twitch.
+Application that lets you and your friends organize a Christmas lottery. It offers really cool chat and communication features.
 
 # Technologies
 - TypeScript
